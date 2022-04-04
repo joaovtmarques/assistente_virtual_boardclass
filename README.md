@@ -20,38 +20,37 @@
 
 - [React](https://pt-br.reactjs.org/)
 - [Node.js](https://nodejs.org/en/)
+- [AdonisJS](https://adonisjs.com/)
 <!--te-->
 
 <br>
 
 ## 🕛 Cronograma
 
-?
+#### **Sprint 1:** 25/03 - 14/04
+#### **Sprint 1:** 25/04 - 15/05
+#### **Sprint 1:** 16/05 - 05/06
 
 <br>
 
 ## 📃 Backlog priorizado
 
-?
+<img src="images/product-backlog.png" />
 
 <br>
 
 ## 📄 Sprint backlog
 
-?
+<img src="images/sprint-backlog.png" />
 
 <br>
-
-
-
-
 
 ## ℹ️ Como usar o aplicativo
 ### Pré-requisitos
 
 Para clonar e rodar a aplicação, é necessário ter instalado em sua máquina as ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) e [Yarn](https://yarnpkg.com/) (opcional).
-Além disso, é bom que se tenha um bom editor de código, como o [VSCode](https://code.visualstudio.com/)
+Além disso, é legal ter um bom editor de código, como o [VSCode](https://code.visualstudio.com/)
 
 ### 🎲 Rodando a aplicação
 
