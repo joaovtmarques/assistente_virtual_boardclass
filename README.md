@@ -8,19 +8,24 @@
 ## 🙅‍♂️ Equipe
 
 #### **Equipe [nome]**
-#### **Integrantes:** Gheovanna Pantaleão, João Pedro, João Vitor Marques, Luciano Pamplona, Mateus Galvão, Silas Rafael, Tiago (?)
+
+#### **Integrantes:** Gheovanna Pantaleão, João Pedro (?), João Vitor Marques, Luciano Pamplona, Mateus Galvão, Silas Rafael, Tiago (?)
 
 <br>
 
 ## 👨‍💻 Tecnologias
 
-#### Este projeto foi desenvolvido com as seguintes tecnologias e bibliotecas:
+#### Este projeto foi desenvolvido com as seguintes tecnologias, bibliotecas e aplicações:
 
 <!--ts-->
 
-- [React](https://pt-br.reactjs.org/)
-- [Node.js](https://nodejs.org/en/)
-- [AdonisJS](https://adonisjs.com/)
+- **Design:** [Figma](https://www.figma.com/)
+- **Ecossistema:** [Node.js](https://nodejs.org/en/)
+- **Front End:** [React](https://pt-br.reactjs.org/)
+- **Back End:** [AdonisJS](https://adonisjs.com/)
+- **Banco de dados:** [PostgreSQL](https://www.postgresql.org/)
+- **Nuvem:** [Heroku](https://www.heroku.com/)
+
 <!--te-->
 
 <br>
@@ -28,7 +33,9 @@
 ## 🕛 Cronograma
 
 #### **Sprint 1:** 25/03 - 14/04
+
 #### **Sprint 2:** 25/04 - 15/05
+
 #### **Sprint 3:** 16/05 - 05/06
 
 <br>
@@ -46,6 +53,7 @@
 <br>
 
 ## ℹ️ Como usar o aplicativo
+
 ### Pré-requisitos
 
 Para clonar e rodar a aplicação, é necessário ter instalado em sua máquina as ferramentas:
