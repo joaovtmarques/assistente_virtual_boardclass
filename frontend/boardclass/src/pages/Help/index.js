@@ -1,17 +1,21 @@
-import React from "react";
 import { LayoutBody } from "../../layout";
 
-export const Discipline = () => {
+export const Help = () => {
     return(
+        
         <LayoutBody>
             <div className="titles">
                 <div className="title">
-                    Cadastrar disciplina
+                    Central de ajuda
                 </div>
-
+                
                 <div className="subTitle">
-                    Para cadastrar uma disciplina, preencha os campos:
+                    Conheça nossas funcionalidades
                 </div>
+            </div>
+
+            <div className="container">
+                
             </div>
         </LayoutBody>
     )

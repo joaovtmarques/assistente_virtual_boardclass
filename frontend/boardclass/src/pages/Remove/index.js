@@ -1,5 +1,17 @@
+import { LayoutBody } from "../../layout"
+
 export const Remove = () => {
     return(
-        <h1>Página para remover</h1>
+        <LayoutBody>            
+            <div className="titles">
+                <div className="title">
+                    Remover Alunos
+                </div>
+                
+                <div className="subTitle">
+                    Para remover alunos, preencha os campos:
+                </div>
+            </div>
+        </LayoutBody>
     )
 }
