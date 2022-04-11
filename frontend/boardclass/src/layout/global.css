@@ -8,8 +8,9 @@
 }
 
 .bar {
+    position: relative;
     padding: 22px;
-    width: 100vw;
+    width: 96.8vw;
     height: 5vh;
     background: #FFFFFF;
 }
