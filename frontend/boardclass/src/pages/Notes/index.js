@@ -1,5 +1,17 @@
+import { LayoutBody } from "../../layout"
+
 export const Notes = () => {
     return(
-        <h1>Página de anotações</h1>
+        <LayoutBody>            
+            <div className="titles">
+                <div className="title">
+                    Anotações
+                </div>
+                
+                <div className="subTitle">
+                    Faça uma anotação: 
+                </div>
+            </div>
+        </LayoutBody>
     )
 }
