@@ -69,9 +69,36 @@ $ git clone <https://github.com/joaovtmarques/assistente_virtual_boardclass>
 # Acesse a pasta do projeto no terminal
 $ cd assistente_virtual_boardclass
 
+# Navegue até a pasta 'frontend' e depois até a pasta 'boardclass'
+$ cd frontend
+$ cd boardclass
+
 # Instale as dependências
 $ npm install ou yarn install
 
 # Execute a aplicação
 $ npm start ou yarn start
 ```
+
+<br>
+
+## 🖥️ Mockups
+
+<img src="design/Mockups/home.png" />
+<img src="design/Mockups/help-center.png" />
+<img src="design/Mockups/discipline-register.png" />
+<img src="design/Mockups/create-class.png" />
+<img src="design/Mockups/add-student.png" />
+<img src="design/Mockups/add-student-menu.png" />
+<img src="design/Mockups/remove-student.png" />
+<img src="design/Mockups/remove-student-menu.png" />
+<img src="design/Mockups/class-info.png" />
+<img src="design/Mockups/class-info-menu.png" />
+<img src="design/Mockups/class-info-panel.png" />
+<img src="design/Mockups/schedule-exam.png" />
+<img src="design/Mockups/schedule-exam-discipline-list.png" />
+<img src="design/Mockups/schedule-exam-class-list.png" />
+<img src="design/Mockups/schedule-lab.png" />
+<img src="design/Mockups/schedule-lab-discipline-list.png" />
+<img src="design/Mockups/schedule-lab-class-list.png" />
+<img src="design/Mockups/create-note.png" />
