@@ -48,6 +48,12 @@
 
 <br>
 
+## 📝 Task/Story Board
+
+<img src="images/taskboard.png" />
+
+<br>
+
 ## ℹ️ Como usar o aplicativo
 
 ### Pré-requisitos
