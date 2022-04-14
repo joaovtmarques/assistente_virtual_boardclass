@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-popup-alert": "^2.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "react-speech-recognition": "^3.9.0",
