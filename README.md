@@ -7,9 +7,9 @@
 
 ## 🙅‍♂️ Equipe
 
-#### **Equipe [nome]**
+#### **Equipe Vox**
 
-#### **Integrantes:** Gheovanna Pantaleão, João Pedro (?), João Vitor Marques, Luciano Pamplona, Mateus Galvão, Silas Rafael, Tiago (?)
+#### **Integrantes:** Gheovanna Pantaleão, João Vitor Marques, Luciano Pamplona, Mateus Galvão, Silas Rafael
 
 <br>
 
@@ -17,16 +17,12 @@
 
 #### Este projeto foi desenvolvido com as seguintes tecnologias, bibliotecas e aplicações:
 
-<!--ts-->
-
 - **Design:** [Figma](https://www.figma.com/)
 - **Ecossistema:** [Node.js](https://nodejs.org/en/)
 - **Front End:** [React](https://pt-br.reactjs.org/)
 - **Back End:** [AdonisJS](https://adonisjs.com/)
 - **Banco de dados:** [PostgreSQL](https://www.postgresql.org/)
 - **Nuvem:** [Heroku](https://www.heroku.com/)
-
-<!--te-->
 
 <br>
 
