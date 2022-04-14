@@ -44,7 +44,7 @@
 
 ## 📄 Sprint backlog
 
-<img src="images/sprint-backlog.png" />
+<img src="images/sprint-backlog.jpeg" />
 
 <br>
 
