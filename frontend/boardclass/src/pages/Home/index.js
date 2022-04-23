@@ -29,7 +29,7 @@ export const Home = () => {
     function onShowAlert(type) {
         setAlert({
             type: type,
-            text: 'olá! sou a assistente BoardClass. você pode pressionar o botão azul ao lado e me dar um comando por voz! ;)',
+            text: 'Olá! Sou a assistente BoardClass. Você pode pressionar o botão azul ao lado e me dar um comando por voz! ;)',
             show: true
         })
     }

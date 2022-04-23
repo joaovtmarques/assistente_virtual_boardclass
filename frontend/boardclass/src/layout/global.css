@@ -9,6 +9,7 @@ html {
     margin: 0 auto;
     background: #CDDCDC;  
     justify-content: flex-start;  
+    overflow: hidden;
 }
 
 .bar {
@@ -20,33 +21,47 @@ html {
 }
 
 .titles{
+    display: flex;
+    flex-direction: column;
     position: absolute;
     padding: 22px;
-    max-height: 100px;
+    max-height: 180px;
+    max-width: 500px;
+    min-width: 20%;
     margin-left: 7vh;
 }
 
 .title {
+    display: flex;
     font-family: 'NanumGothic', sans-serif;
-    font-size: 1.1vw;
+    font-size: 100%;
     font-style:normal;
     font-weight: 700;
     text-align: center;
+    justify-content: center;
     background: rgba(26, 187, 187, 1);
-    line-height: 33px;
+    line-height: 30px;
     color:#FFFFFF;
-    height: 35px;
-    width: 170px;
-    padding:  0 14px 0 14px;
+    width: auto;
+    max-width: 220px;
+    max-height: 50px;
+    min-width: 50%;
     margin-bottom: 6vh;
+    padding: 2px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+}
+
+.title img{
+    margin: 5px;
+    margin-left: 2.5px;
+    transform: rotate(-0.12deg);
 }
 
 .subTitle {    
     font-family: 'NanumGothic', sans-serif;
     font-weight: 400;
-    font-size: 1.1vw;    
+    font-size: 100%;
     text-align: center;
     background: #FFFFFF;
     line-height: 33px;
@@ -54,6 +69,7 @@ html {
     height: 35px;
     padding:  0 21px 0 21px;
     width: auto;
+    padding: 0 70px 0 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
@@ -97,14 +113,45 @@ html {
     background: rgba(144, 193, 193, 1); 
     color: #FFFFFF;
     font-family: 'NanumGothic', sans-serif;
-    font-size: 1.5vw;
-    height: 6.7vh;
+    font-size: 1.3vw;
+    height: 6vh;
     width: 100%;
-    margin-top: 3vh;  
+    margin-top: 4vh;  
 }
 
 .cardImg{
+    display: flex;
+    max-height: 60%;
+    max-width: 60%;
+    min-height: 30%;
+    min-width: 30%;
     margin-top: 3vh;
+}
+
+.containerInput{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    min-height: 520px;
+    margin-top: 40px;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.bodyImg {
+    display: flex;
+    margin-top: 25vh;
+    overflow: hidden;
+}
+
+.bodyImg img{
+    width: 30vw;
+    height: 55vh;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
 }
 
 Link {
