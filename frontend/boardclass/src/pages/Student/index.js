@@ -16,7 +16,7 @@ export const Student = () => {
                 </div>
 
                 <div className="subTitle">
-                    Para adicionar alunos, preencha os campos:
+                    <span>Para adicionar alunos, preencha os campos:</span>
                 </div>
             </div>
 

@@ -14,7 +14,7 @@ export const Show = () => {
                 </div>
 
                 <div className="subTitle">
-                    Para ver as informações da turma, preencha:
+                    <span>Para ver as informações da turma, preencha:</span>
                 </div>
             </div>
 

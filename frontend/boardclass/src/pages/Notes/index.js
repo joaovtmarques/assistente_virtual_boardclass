@@ -14,7 +14,7 @@ export const Notes = () => {
                 </div>
 
                 <div className="subTitle">
-                    Faça uma anotação:
+                    <span>Faça uma anotação:</span>
                 </div>
             </div>
 

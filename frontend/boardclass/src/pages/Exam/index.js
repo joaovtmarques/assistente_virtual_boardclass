@@ -15,7 +15,7 @@ export const Exam = () => {
                 </div>
 
                 <div className="subTitle">
-                    Para marcar prova, preencha os campos:
+                    <span>Para marcar prova, preencha os campos:</span>
                 </div>
             </div>
 

@@ -3,6 +3,8 @@ import { LayoutBody } from "../../layout";
 import bodyImg from './images/books.png';
 import titleIcon from './images/icondisci.png';
 import lineTitle from './images/lineTitle.png';
+import buttonInput from './images/buttonInput.png';
+import buttonSend from './images/buttonSend.png';
 
 export const Discipline = () => {
     return(
@@ -15,14 +17,26 @@ export const Discipline = () => {
                 </div>
 
                 <div className="subTitle">
-                    Para cadastrar uma disciplina, preencha os campos:
+                    <span>Para cadastrar uma disciplina, preencha os campos:</span>
                 </div>
             </div>
 
             <div className="containerInput">
                 <div className="forms">
                     <form>
-                        
+                        <div className="rowInput">
+                            <span>Nome da disciplina:</span>
+                            <input className="disciplineName"></input>
+                            <button className="buttonInput"><img src={buttonInput} alt=""></img></button>
+                        </div>
+                        <br></br>
+                        <div className="rowInput">
+                            <span>Descrição da disciplina:</span>
+                            <input className="disciplineDescript"></input>
+                            <button className="buttonInput"><img src={buttonInput} alt=""></img></button>
+                        </div>
+                        <br></br>
+                        <button className="buttonSubmit"><img src={buttonSend} alt=""></img></button>
                     </form>
                 </div>
 

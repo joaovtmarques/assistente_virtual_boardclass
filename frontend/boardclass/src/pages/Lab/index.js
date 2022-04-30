@@ -14,7 +14,7 @@ export const Lab = () => {
                 </div>
 
                 <div className="subTitle">
-                    Para reservar o laboratório, preencha os campos:
+                    <span>Para reservar o laboratório, preencha os campos:</span>
                 </div>
             </div>
 

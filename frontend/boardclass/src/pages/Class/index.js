@@ -15,7 +15,7 @@ export const Class = () => {
                 </div>
 
                 <div className="subTitle">
-                    Para criar uma turma, preencha os campos:
+                    <span>Para criar uma turma, preencha os campos:</span>
                 </div>
             </div>
 

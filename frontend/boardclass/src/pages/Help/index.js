@@ -18,8 +18,8 @@ export const Help = () => {
                     Central de ajuda
                 </div>
                 
-                <div className="subTitle">
-                    Conheça nossas funcionalidades
+                <div className="subTitleHelp">
+                    <span>Conheça nossas funcionalidades</span>
                 </div>
             </div>
 

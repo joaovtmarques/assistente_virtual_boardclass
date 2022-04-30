@@ -16,7 +16,7 @@ html {
     position: relative;
     padding: 22px;
     width: 96.8vw;
-    height: 5vh;
+    height: 7vh;
     background: #FFFFFF;
 }
 
@@ -26,12 +26,11 @@ html {
     position: absolute;
     padding: 22px;
     max-height: 180px;
-    max-width: 500px;
-    min-width: 20%;
+    max-width: 500px; 
     margin-left: 7vh;
 }
 
-.title {
+.title{
     display: flex;
     font-family: 'NanumGothic', sans-serif;
     font-size: 100%;
@@ -40,13 +39,15 @@ html {
     text-align: center;
     justify-content: center;
     background: rgba(26, 187, 187, 1);
-    line-height: 30px;
+    line-height: 35px;
     color:#FFFFFF;
     width: auto;
+    height: 35px;
     max-width: 220px;
     max-height: 50px;
     min-width: 50%;
-    margin-bottom: 6vh;
+    margin-bottom: 7.4vh;
+    margin-top: 0.7vh;
     padding: 2px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -58,31 +59,133 @@ html {
     transform: rotate(-0.12deg);
 }
 
-.subTitle {    
+.subTitle{    
     font-family: 'NanumGothic', sans-serif;
     font-weight: 400;
     font-size: 100%;
-    text-align: center;
     background: #FFFFFF;
     line-height: 33px;
     color: #929292;
     height: 35px;
-    padding:  0 21px 0 21px;
-    width: auto;
-    padding: 0 70px 0 20px;
+    padding: 2px 0 2px 0;
+    width: 420px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
 
+.subTitleHelp{    
+    font-family: 'NanumGothic', sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+    background: #FFFFFF;
+    line-height: 33px;
+    color: #929292;
+    height: 35px;
+    padding: 2px 0 2px 0;
+    width: auto;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.subTitleHelp span{
+    margin: 0px 21px 0px 21px;
+}
+
+.subTitle span{
+    margin-left: 14px;
+}
+
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    margin-left: 4.8vw;
+    margin-top: 10vh;
+    height: 35px;
+}
+
+.forms button {
+    cursor: pointer;
+}
+
+.forms input{
+    outline: none;
+    border: 0;
+    height: 33px;
+    font-family: 'NanumGothic', sans-serif;
+    font-size: 100%;
+    font-style:normal;
+    font-weight: 500;
+    color: #929292;
+    line-height: 70px;
+}
+
+.forms span{
+    margin-left: 14px;
+}
+
+.forms .buttonInput{
+    outline: none;
+    border: 0;
+    background: white;
+    margin: 4px 10px 0 0;
+}
+
+.forms .buttonSubmit{
+    outline: none;
+    border: 0;
+    background: #CDDCDC;  
+    display: flex;
+    margin-left: 53.1vh;
+}
+
+.rowInput{
+    display: flex;
+    background: white;
+    height: 33px;
+    width: 420px;
+    line-height: 31px;
+    font-family: 'NanumGothic', sans-serif;
+    font-size: 100%;
+    font-style:normal;
+    font-weight: 400;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 2px 0px 2px 1px;
+    color: #929292;
+    justify-content: space-between;
+}
+
+.containerInput{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    min-height: 520px;
+    margin-top: 20px;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.bodyImg{
+    display: flex;
+    margin-top: 25vh;
+    overflow: hidden;
+}
+
+.bodyImg img{
+    width: 30vw;
+    height: 55vh;
+}
+
 .containerHelp{
     display: flex;
-    height: 92vh;
+    height: 95vh;
     width: 100vw;
     background: #CDDCDC; 
     align-items: center;
     justify-content: center; 
     flex-direction: column;
-    margin-left: 1vw; 
+    margin-left: 0.9vw;
 }
 
 .cardbox{
@@ -126,32 +229,6 @@ html {
     min-height: 30%;
     min-width: 30%;
     margin-top: 3vh;
-}
-
-.containerInput{
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    min-height: 520px;
-    margin-top: 40px;
-    justify-content: space-between;
-    overflow: hidden;
-}
-
-.bodyImg {
-    display: flex;
-    margin-top: 25vh;
-    overflow: hidden;
-}
-
-.bodyImg img{
-    width: 30vw;
-    height: 55vh;
-}
-
-.forms {
-    display: flex;
-    flex-direction: column;
 }
 
 Link {

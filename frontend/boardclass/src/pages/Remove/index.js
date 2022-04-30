@@ -14,7 +14,7 @@ export const Remove = () => {
                 </div>
 
                 <div className="subTitle">
-                    Para remover alunos, preencha os campos:
+                    <span>Para remover alunos, preencha os campos:</span>
                 </div>
             </div>
 
