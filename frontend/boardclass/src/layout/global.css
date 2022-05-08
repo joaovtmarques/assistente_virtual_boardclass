@@ -118,6 +118,17 @@ html {
     cursor: pointer;
 }
 
+.stopButtonInput {
+    margin: 8px 8px 0 0;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    background-color: rgb(151, 9, 9);
+    border-radius: 15px;
+}
+
 .forms input{
     outline: none;
     border: 0;
@@ -146,7 +157,7 @@ html {
     border: 0;
     background: #CDDCDC;  
     display: flex;
-    margin-left: 53.1vh;
+    margin-left: 52.5vh;
 }
 
 .rowInput{
