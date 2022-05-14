@@ -9,7 +9,7 @@ Route.group(() => {
     Route.post('/', 'ClassesController.store')
 
     // get an class by name
-    Route.get('/:name', 'ClassesController.show')
+    Route.get('/:id', 'ClassesController.show')
 
     // update class fields
     Route.put('/:id', 'ClassesController.update')

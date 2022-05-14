@@ -9,7 +9,7 @@
 
 #### **Equipe Vox**
 
-#### **Integrantes:** Gheovanna Pantaleão, João Vitor Marques, Luciano Pamplona, Mateus Galvão, Silas Rafael
+#### **Integrantes:** Gheovanna Pantaleão, João Vitor Marques, Luciano Pamplona, Silas Rafael
 
 <br>
 
@@ -22,7 +22,6 @@
 - **Front End:** [React](https://pt-br.reactjs.org/)
 - **Back End:** [AdonisJS](https://adonisjs.com/)
 - **Banco de dados:** [PostgreSQL](https://www.postgresql.org/)
-- **Nuvem:** [Heroku](https://www.heroku.com/)
 
 <br>
 
@@ -36,15 +35,19 @@
 
 <br>
 
-## 📃 Backlog priorizado
+## 📃 Backlog do produto
 
-<img src="images/product-backlog.png" />
+<img src="images/backlogs/product-backlog.jpeg" />
 
 <br>
 
 ## 📄 Sprint backlog
 
-<img src="images/sprint-backlog.jpeg" />
+<a href="https://github.com/joaovtmarques/assistente_virtual_boardclass/tree/main/images/backlogs/sprint-backlog1.jpeg">Sprint Backlog 1</a>
+<br>
+<a href="https://github.com/joaovtmarques/assistente_virtual_boardclass/tree/main/images/backlogs/sprint-backlog2.jpeg">Sprint Backlog 2</a>
+<br>
+<a href="https://github.com/joaovtmarques/assistente_virtual_boardclass/tree/main/images/backlogs/sprint-backlog3.jpeg">Sprint Backlog 3</a>
 
 <br>
 
@@ -67,17 +70,13 @@ Além disso, é legal ter um bom editor de código, como o [VSCode](https://code
 ```bash
 # Clone este repositório
 $ git clone <https://github.com/joaovtmarques/assistente_virtual_boardclass>
-
 # Acesse a pasta do projeto no terminal
 $ cd assistente_virtual_boardclass
-
 # Navegue até a pasta 'frontend' e depois até a pasta 'boardclass'
 $ cd frontend
 $ cd boardclass
-
 # Instale as dependências
 $ npm install ou yarn install
-
 # Execute a aplicação
 $ npm start ou yarn start
 ```
