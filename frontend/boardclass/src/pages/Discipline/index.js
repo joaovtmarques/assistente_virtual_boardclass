@@ -9,8 +9,7 @@ import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognitio
 import styles from '../Home/home.module.css';
 
 export const Discipline = () => {
-    const { transcript } = useSpeechRecognition();
-    const { transcript2 } = useSpeechRecognition();
+    const { transcript, transcript2, resetTranscript } = useSpeechRecognition();
     const [isListening,  setIsListening] = useState(false);
     const [isListening2,  setIsListening2] = useState(false);
     const microphoneRef = useRef(null);
@@ -35,6 +34,7 @@ export const Discipline = () => {
         setIsListening(false);
         microphoneRef.current.classList.remove("listening");
         SpeechRecognition.stopListening();
+        
     }
 
     const handleListening2 = () => {
@@ -49,6 +49,7 @@ export const Discipline = () => {
         setIsListening2(false);
         microphoneRef2.current.classList.remove("listening");
         SpeechRecognition.stopListening();
+        
     }
 
     return(

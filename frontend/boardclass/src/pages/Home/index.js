@@ -66,7 +66,11 @@ export const Home = () => {
         window.location.href = "/discipline";
         
     } else if (transcript == 'criar turma') {
-            window.location.href = "/class";
+        window.location.href = "/class";
+    } else if (transcript == 'adicionar aluno') {
+        window.location.href = "/student"
+    } else if (transcript == 'remover aluno') {
+        window.location.href = "/remove"
     }
 
     return(
