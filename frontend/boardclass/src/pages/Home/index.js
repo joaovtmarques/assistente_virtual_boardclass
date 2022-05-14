@@ -62,6 +62,13 @@ export const Home = () => {
         SpeechRecognition.stopListening();
     }
 
+    if (transcript === 'cadastrar disciplina') {
+        window.location.href = "/discipline";
+        
+    } else if (transcript == 'criar turma') {
+            window.location.href = "/class";
+    }
+
     return(
        <body>
            <div className={styles.alertContainer}>
@@ -133,6 +140,7 @@ export const Home = () => {
                         ||
                         null
                     }
+                    
                 </div>
 
                 <div className={styles.centralHelp}>
