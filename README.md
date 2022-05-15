@@ -103,4 +103,4 @@ $ npm start ou yarn start
 <img src="design/Mockups/schedule-lab-discipline-list.png" />
 <img src="design/Mockups/schedule-lab-class-list.png" />
 <img src="design/Mockups/create-note.png" />
-<img src="design/Mockups/note.png" />
+<img src="design/Mockups/notes.png" />
