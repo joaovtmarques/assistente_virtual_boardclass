@@ -1,5 +1,7 @@
-import { LayoutBody } from "../../layout"
+import { LayoutBody } from "../../layout";
+import { Link } from "react-router-dom";
 import bodyImg from './images/noteImg.png';
+import buttonSend from './images/buttonSend.png';
 import titleIcon from './images/noteicon.png';
 import lineTitle from './images/lineTitle.png';
 
@@ -23,11 +25,13 @@ export const Notes = () => {
                     <form>
                         
                     </form>
+                    <Link to="/Help"><button className="buttonSubmit"><img src={buttonSend} alt=""></img></button></Link>
                 </div>
                 
                 <div className="bodyImg">
                     <img src={bodyImg} alt=""></img>
                 </div>
+                
             </div>          
         </LayoutBody>
     )

@@ -1,4 +1,5 @@
 import React,{ useRef,useState } from "react";
+import { Link } from "react-router-dom";
 import { LayoutBody } from "../../layout";
 import bodyImg from './images/books.png';
 import titleIcon from './images/icondisci.png';
@@ -9,8 +10,7 @@ import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognitio
 import styles from '../Home/home.module.css';
 
 export const Discipline = () => {
-    const { transcript } = useSpeechRecognition();
-    const { transcript2 } = useSpeechRecognition();
+    const { transcript, transcript2, resetTranscript } = useSpeechRecognition();
     const [isListening,  setIsListening] = useState(false);
     const [isListening2,  setIsListening2] = useState(false);
     const microphoneRef = useRef(null);
@@ -35,6 +35,7 @@ export const Discipline = () => {
         setIsListening(false);
         microphoneRef.current.classList.remove("listening");
         SpeechRecognition.stopListening();
+        
     }
 
     const handleListening2 = () => {
@@ -49,6 +50,7 @@ export const Discipline = () => {
         setIsListening2(false);
         microphoneRef2.current.classList.remove("listening");
         SpeechRecognition.stopListening();
+        
     }
 
     return(
@@ -68,8 +70,7 @@ export const Discipline = () => {
             <div className="containerInput">
                 <div className="forms">
                     <div className="rowInput">
-                        <span>Nome da disciplina:</span>
-                        <input className="disciplineName" value={transcript}/>
+                        <input className="disciplineName" value={transcript} placeholder={'Nome da disciplina: '}/>
                         
                         <button className="buttonInput" ref={microphoneRef} onClick={isListening ? stopListening : handleListening}>
                             { isListening &&
@@ -80,9 +81,8 @@ export const Discipline = () => {
                         </button>
                     </div>
                     <br></br>
-                    <div className="rowInput"> 
-                        <span>Descrição da disciplina:</span>
-                        <input className="disciplineDescript" value={transcript2}/>
+                    <div className="rowInput">                    
+                        <input className="disciplineDescript" value={transcript2} placeholder={'Descrição da disciplina:'}/>
 
                         <button className="buttonInput" ref={microphoneRef2} onClick={isListening2 ? stopListening2 : handleListening2}>      
                             { isListening2 &&
@@ -93,7 +93,7 @@ export const Discipline = () => {
                         </button>
                     </div>
                     <br></br>
-                    <button className="buttonSubmit"><img src={buttonSend} alt=""></img></button>     
+                    <Link to="/Help"><button className="buttonSubmit"><img src={buttonSend} alt=""></img></button></Link>     
                 </div>
 
                 <div className="bodyImg">
