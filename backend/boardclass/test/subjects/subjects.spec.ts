@@ -1,4 +1,3 @@
-// import { UserFactory } from 'Database/factories'
 import test from 'japa'
 import supertest from 'supertest'
 import Database from '@ioc:Adonis/Lucid/Database'

@@ -1,3 +1,4 @@
+import Application from '@ioc:Adonis/Core/Application'
 /**
  * Config source: https://git.io/JesV9
  *
@@ -6,7 +7,6 @@
  */
 
 import Env from '@ioc:Adonis/Core/Env'
-import Application from '@ioc:Adonis/Core/Application'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
 
 const databaseConfig: DatabaseConfig = {

@@ -56,6 +56,8 @@ export default class ClassesController {
       throw new BadRequest('resource not found', 404)
     }
 
+    await classExists.save()
+
     return response.ok({ class: classExists })
   }
 

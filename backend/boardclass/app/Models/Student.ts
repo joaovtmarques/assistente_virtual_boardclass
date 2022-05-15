@@ -8,7 +8,7 @@ export default class Student extends BaseModel {
   public name: String
 
   @column()
-  public ra: Number
+  public ra: String
 
   @column()
   public class_id: Number

@@ -8,8 +8,8 @@ Route.group(() => {
     // register a new student
     Route.post('/', 'StudentsController.store')
 
-    // get an student by name
-    Route.get('/:name', 'StudentsController.show')
+    // get an student by id
+    Route.get('/:id', 'StudentsController.show')
 
     // update student fields
     Route.put('/:id', 'StudentsController.update')

@@ -19,6 +19,12 @@ export default class SubjectsController {
   }
 
   public async destroy({ request, response }: HttpContextContract) {
+    const id = request.param('id')
+
+    const subject = await Subject.findByOrFail('id', id)
+
+    await subject.delete()
+
     return response.ok({})
   }
 }
