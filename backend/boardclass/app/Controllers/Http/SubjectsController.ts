@@ -3,7 +3,9 @@ import Subject from 'App/Models/Subject'
 
 export default class SubjectsController {
   public async index({ request, response }: HttpContextContract) {
-    return response.ok({})
+    const subjects = await Subject.all()
+
+    return response.ok({ subjects })
   }
 
   public async store({ request, response }: HttpContextContract) {
