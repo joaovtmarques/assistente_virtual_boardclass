@@ -1,4 +1,5 @@
-import { LayoutBody } from "../../layout"
+import { LayoutBody } from "../../layout";
+import { Link } from "react-router-dom";
 import bodyImg from './images/examImg.png';
 import titleIcon from './images/examicon.png';
 import lineTitle from './images/lineTitle.png';
@@ -70,8 +71,7 @@ export const Exam = () => {
             <div className="containerInput">
                 <div className="forms">
                     <div className="rowInput">
-                        <span>Disciplina:</span>
-                        <input className="studentName" value={transcript}/>
+                        <input className="studentName" value={transcript} placeholder={'Disciplina: '}/>
                         
                         <button className="buttonInput" ref={microphoneRef} onClick={isListening ? stopListening : handleListening}>
                             { isListening &&
@@ -83,8 +83,7 @@ export const Exam = () => {
                     </div>
                     <br></br>
                     <div className="rowInput"> 
-                        <span>Turma:</span>
-                        <input className="studentRA" value={transcript2}/>
+                        <input className="studentRA" value={transcript2} placeholder={'Turma: '}/>
 
                         <button className="buttonInput" ref={microphoneRef2} onClick={isListening2 ? stopListening2 : handleListening2}>      
                             { isListening2 &&
@@ -96,8 +95,7 @@ export const Exam = () => {
                     </div>
                     <br></br>
                     <div className="rowInput"> 
-                        <span>Dia:</span>
-                        <input className="className" value={transcript2}/>
+                        <input className="className" value={transcript2} placeholder={'Dia: '}/>
 
                         <button className="buttonInput" ref={microphoneRef2} onClick={isListening2 ? stopListening2 : handleListening2}>      
                             { isListening2 &&
@@ -108,7 +106,7 @@ export const Exam = () => {
                         </button>
                     </div>
                     <br></br>
-                    <button className="buttonSubmit"><img src={buttonSend} alt=""></img></button>     
+                    <Link to="/Help"><button className="buttonSubmit"><img src={buttonSend} alt=""></img></button></Link>      
                 </div>
 
                 <div className="bodyImg">

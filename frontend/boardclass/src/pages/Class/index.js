@@ -1,4 +1,5 @@
 import  React ,  {  useState  }  from  'react' ; 
+import { Link } from "react-router-dom";
 import  {  useSpeechRecognition  }  from  'react-speech-kit' ;
 import { LayoutBody } from "../../layout";
 import bodyImg from './images/classimg.png';
@@ -34,19 +35,17 @@ export const Class = () => {
                 <div className="forms">
                 <form>
                         <div className="rowInput">
-                            <span>Nome da turma:</span>
-                            <input className="disciplineName" value = { value } onChange = { ( event )  =>  setValue ( event . target . value ) }></input>
+                            <input className="disciplineName" placeholder={'Nome da turma: '} value = { value } onChange = { ( event )  =>  setValue ( event . target . value ) }></input>
                             <button className="buttonInput" onMouseDown={listen} onMouseUp={stop}><img src={buttonInput} alt=""></img></button>
                             { listening && <button className="stopButtonInput"></button> }
                         </div>
                         <br></br>
                         <div className="rowInput">
-                            <span>Nome da disciplina:</span>
-                            <input className="disciplineDescript"></input>
+                            <input className="disciplineDescript" placeholder={'Nome da disciplina: '}></input>
                             <button className="buttonInput" ><img src={buttonInput} alt=""></img></button>
                         </div>
                         <br></br>
-                        <button className="buttonSubmit"><img src={buttonSend} alt=""></img></button>
+                        <Link to="/Help"><button className="buttonSubmit"><img src={buttonSend} alt=""></img></button></Link> 
                     </form>
                 </div>
                 

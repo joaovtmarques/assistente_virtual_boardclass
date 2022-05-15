@@ -1,4 +1,5 @@
-import { LayoutBody } from "../../layout"
+import { LayoutBody } from "../../layout";
+import { Link } from "react-router-dom";
 import bodyImg from './images/infoImg.png';
 import titleIcon from './images/infoicon.png';
 import lineTitle from './images/lineTitle.png';
@@ -68,8 +69,7 @@ export const Show = () => {
             <div className="containerInput">
                 <div className="forms">
                     <div className="rowInput">
-                        <span>Nome da turma:</span>
-                        <input className="className" value={transcript}/>
+                        <input className="className" value={transcript} placeholder={'Nome da turma:'}/>
                         
                         <button className="buttonInput" ref={microphoneRef} onClick={isListening ? stopListening : handleListening}>
                             { isListening &&
@@ -80,7 +80,7 @@ export const Show = () => {
                         </button>
                     </div>
                     <br></br>
-                    <button className="buttonSubmit"><img src={buttonSend} alt=""></img></button>     
+                    <Link to="/Help"><button className="buttonSubmit"><img src={buttonSend} alt=""></img></button></Link>     
                 </div>
 
                 <div className="bodyImg">

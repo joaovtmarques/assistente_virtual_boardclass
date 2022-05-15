@@ -71,6 +71,14 @@ export const Home = () => {
         window.location.href = "/student"
     } else if (transcript == 'remover aluno') {
         window.location.href = "/remove"
+    }else if (transcript == 'informações da turma') {
+        window.location.href = "/Show"
+    }else if (transcript == 'marcar prova') {
+        window.location.href = "/Exam"
+    }else if (transcript == 'anotações') {
+        window.location.href = "/Notes"
+    }else if (transcript == 'reservar laboratório') {
+        window.location.href = "/Lab"
     }
 
     return(

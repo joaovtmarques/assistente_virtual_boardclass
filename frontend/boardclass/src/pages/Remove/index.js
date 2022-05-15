@@ -1,4 +1,5 @@
-import { LayoutBody } from "../../layout"
+import { LayoutBody } from "../../layout";
+import { Link } from "react-router-dom";
 import bodyImg from './images/removeImg.png';
 import titleIcon from './images/removeicon.png';
 import lineTitle from './images/lineTitle.png';
@@ -69,8 +70,7 @@ export const Remove = () => {
             <div className="containerInput">
                 <div className="forms">
                     <div className="rowInput">
-                        <span>Nome do aluno:</span>
-                        <input className="disciplineName" value={transcript}/>
+                        <input className="disciplineName" value={transcript} placeholder={'Nome do aluno:'}/>
                         
                         <button className="buttonInput" ref={microphoneRef} onClick={isListening ? stopListening : handleListening}>
                             { isListening &&
@@ -81,7 +81,7 @@ export const Remove = () => {
                         </button>
                     </div>
                     <br></br>
-                    <button className="buttonSubmit"><img src={buttonSend} alt=""></img></button>     
+                    <Link to="/Help"><button className="buttonSubmit"><img src={buttonSend} alt=""></img></button></Link>     
                 </div>
 
                 <div className="bodyImg">
