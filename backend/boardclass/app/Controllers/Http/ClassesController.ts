@@ -28,14 +28,18 @@ export default class ClassesController {
     if (classExists) throw new BadRequest('class already exists', 409)
 
     const newClass = await Class.create(payload)
+    await newClass.related('subject').attach([payload.subject_id])
 
     return response.created({ class: newClass })
   }
 
   public async show({ request, response }: HttpContextContract) {
-    const id = request.param('id')
+    const name = request.param('name')
 
-    const classExists = await Class.findByOrFail('id', id)
+    const classExists = await Class.findByOrFail('name', name)
+
+    await classExists.load('subject')
+    await classExists.load('students')
 
     return response.ok({ class: classExists })
   }

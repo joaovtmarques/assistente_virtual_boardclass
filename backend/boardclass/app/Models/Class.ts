@@ -1,4 +1,13 @@
-import { BaseModel, column, HasMany, hasMany, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
+import {
+  BaseModel,
+  column,
+  HasMany,
+  hasMany,
+  HasOne,
+  hasOne,
+  ManyToMany,
+  manyToMany,
+} from '@ioc:Adonis/Lucid/Orm'
 
 import Student from './Student'
 import Subject from 'App/Models/Subject'
@@ -13,13 +22,13 @@ export default class Class extends BaseModel {
   @column()
   public subject_id: Number
 
-  @hasMany(() => Student, {
-    foreignKey: 'class_id',
+  @manyToMany(() => Student, {
+    pivotTable: 'classes_students',
   })
-  public students: HasMany<typeof Student>
+  public students: ManyToMany<typeof Student>
 
-  @hasOne(() => Subject, {
-    foreignKey: 'class_id',
+  @manyToMany(() => Subject, {
+    pivotTable: 'classes_subjects',
   })
-  public subject: HasOne<typeof Subject>
+  public subject: ManyToMany<typeof Subject>
 }

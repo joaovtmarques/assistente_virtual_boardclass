@@ -19,7 +19,14 @@ export default class StudentsController {
 
     await Class.findByOrFail('id', payload.class_id)
 
+    const raExists = await Student.findBy('ra', payload.ra)
+
+    if (raExists) {
+      throw new BadRequest('ra already exists', 409)
+    }
+
     const student = await Student.create(payload)
+    await student.related('class').attach([payload.class_id])
 
     return response.created({ student })
   }

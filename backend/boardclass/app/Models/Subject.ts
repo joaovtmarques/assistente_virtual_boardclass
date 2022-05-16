@@ -11,6 +11,8 @@ export default class Subject extends BaseModel {
   @column()
   public description: String
 
-  @manyToMany(() => Class)
+  @manyToMany(() => Class, {
+    pivotTable: 'classes_subjects',
+  })
   public classes: ManyToMany<typeof Class>
 }

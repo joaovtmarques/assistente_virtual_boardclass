@@ -17,5 +17,12 @@ export default {
       message:
         "Erro na busca de disciplinas. Por favor, recarregue a página :(",
     },
+    {
+      message:
+        "Ah não! :( Parece que tivemos um problema para cadastrar seu aluno.",
+    },
+    {
+      message: "Erro na busca de turmas. Por favor, recarregue a página :(",
+    },
   ],
 };
