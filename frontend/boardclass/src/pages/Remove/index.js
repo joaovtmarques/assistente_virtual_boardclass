@@ -1,93 +1,212 @@
 import { LayoutBody } from "../../layout";
-import { Link } from "react-router-dom";
-import bodyImg from './images/removeImg.png';
-import titleIcon from './images/removeicon.png';
-import lineTitle from './images/lineTitle.png';
-import React,{ useRef,useState } from "react";
-import buttonInput from './images/buttonInput.png';
-import buttonSend from './images/buttonSend.png';
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
-import styles from '../Home/home.module.css';
+import Select from "react-select";
+import bodyImg from "./images/removeImg.png";
+import titleIcon from "./images/removeicon.png";
+import lineTitle from "./images/lineTitle.png";
+import React, { useEffect, useRef, useState } from "react";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+import Alert from "react-popup-alert";
+import styles from "../Home/home.module.css";
+import Globals from "../../global/Globals";
+import api from "../../services/api";
+import mic from "./images/mic-white.png";
 
 export const Remove = () => {
+  const { transcript, resetTranscript } = useSpeechRecognition();
+  const [isListening, setIsListening] = useState(false);
+  const [studentId, setStudentId] = useState(0);
+  const [text, setText] = useState("");
+  const [alert, setAlert] = useState({
+    type: "warning",
+    text: "alert message",
+    show: false,
+  });
+  const [options, setOptions] = useState([]);
+  const microphoneRef = useRef(null);
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return (
+      <div className="notSupportContainer">
+        Browser is not Support Speech Recognition.
+      </div>
+    );
+  }
 
-    const { transcript } = useSpeechRecognition();
-    const { transcript2 } = useSpeechRecognition();
-    const [isListening,  setIsListening] = useState(false);
-    const [isListening2,  setIsListening2] = useState(false);
-    const microphoneRef = useRef(null);
-    const microphoneRef2 = useRef(null);
-    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-        return (
-            <div className="notSupportContainer">
-                Browser is not Support Speech Recognition.
-            </div>
-        );
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    async function getStudents() {
+      try {
+        const students = await api.get("students", {});
+
+        setOptions(students.data.students);
+      } catch (e) {
+        onShowAlert("warning", 3);
+      }
     }
 
-    const handleListening = () => {
-        setIsListening(true);
-        microphoneRef.current.classList.add("listening");
-        SpeechRecognition.startListening({
-            continuous: true,
-        });
-    };
-
-    const stopListening = () => {
-        setIsListening(false);
-        microphoneRef.current.classList.remove("listening");
-        SpeechRecognition.stopListening();
+    async function students() {
+      if (transcript.includes("remover") || transcript.includes("aluno")) {
+        handleRemoveStudent();
+      }
     }
 
-    const handleListening2 = () => {
-        setIsListening2(true);
-        microphoneRef2.current.classList.add("listening");
-        SpeechRecognition.startListening({
-            continuous: true,
-        });
-    };
+    getStudents();
+    students();
+  }, [transcript]);
 
-    const stopListening2 = () => {
-        setIsListening2(false);
-        microphoneRef2.current.classList.remove("listening");
-        SpeechRecognition.stopListening();
+  const handleRemoveStudent = async () => {
+    if (studentId) {
+      try {
+        await api.remove("students", { studentId });
+
+        setTimeout(() => {
+          onShowAlert("warning", 2);
+          setTimeout(() => {
+            window.location.href = "/Help";
+          }, 1000);
+        }, 2000);
+      } catch (e) {
+        onShowAlert("warning", 1);
+      }
+    } else {
+      onShowAlert("warning", 0);
     }
+  };
 
-    return(
-        <LayoutBody>            
-            <div className="titles">
-                <div className="title">
-                    <img src={titleIcon} alt=""></img>
-                    <img src={lineTitle} alt=""></img>
-                    <span>Remover Alunos</span>
-                </div>
+  const handleListening = () => {
+    setIsListening(true);
+    microphoneRef.current.classList.add("listening");
+    SpeechRecognition.startListening({
+      continuous: true,
+    });
+  };
 
-                <div className="subTitle">
-                    <span>Para remover alunos, preencha os campos:</span>
-                </div>
-            </div>
+  const stopListening = () => {
+    microphoneRef.current.classList.remove("listening");
+    SpeechRecognition.stopListening();
+    setIsListening(false);
+    resetTranscript();
+  };
 
-            <div className="containerInput">
-                <div className="forms">
-                    <div className="rowInput">
-                        <input className="disciplineName" value={transcript} placeholder={'Nome do aluno:'}/>
-                        
-                        <button className="buttonInput" ref={microphoneRef} onClick={isListening ? stopListening : handleListening}>
-                            { isListening &&
-                                <img className={styles.stopButton}></img>
-                                ||
-                                <img src={buttonInput}></img>             
-                            }
-                        </button>
-                    </div>
-                    <br></br>
-                    <Link to="/Help"><button className="buttonSubmit"><img src={buttonSend} alt=""></img></button></Link>     
-                </div>
+  function onCloseAlert(help) {
+    setAlert({
+      type: "",
+      text: "",
+      show: false,
+    });
+  }
 
-                <div className="bodyImg">
-                    <img src={bodyImg} alt=""></img>
-                </div>
-            </div>  
-        </LayoutBody>
-    )
-}
+  function onShowAlert(type, index) {
+    setAlert({
+      type: type,
+      text: Globals.messages[index].message,
+      show: true,
+    });
+  }
+
+  const colourStyles = {
+    control: (styles) => ({
+      flex: 1,
+      width: 420,
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      paddingTop: 0,
+    }),
+  };
+
+  return (
+    <LayoutBody>
+      <div className="titles">
+        <div className="title">
+          <img src={titleIcon} alt=""></img>
+          <img src={lineTitle} alt=""></img>
+          <span>Remover Alunos</span>
+        </div>
+
+        <div className="subTitle">
+          <span>Para remover alunos, preencha os campos:</span>
+        </div>
+      </div>
+      <div className={styles.alertContainer2}>
+        <Alert
+          header={""}
+          btnText={"Entendi :)"}
+          text={alert.text}
+          type={alert.type}
+          show={alert.show}
+          onClosePress={onCloseAlert}
+          pressCloseOnOutsideClick={true}
+          showBorderBottom={true}
+          alertStyles={{
+            height: 160,
+            width: 200,
+            backgroundColor: "#1ABBBB",
+            padding: 15,
+            borderRadius: 15,
+            border: 0,
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+          headerStyles={{
+            display: "none",
+          }}
+          textStyles={{
+            textAlign: "center",
+            fontSize: 14,
+            fontWeight: "300",
+            fontFamily: "sans-serif",
+            color: "#FFFFFF",
+            padding: 0,
+          }}
+          buttonStyles={{
+            textAlign: "center",
+            paddingTop: 10,
+            paddingBottom: 10,
+            paddingRight: 15,
+            paddingLeft: 15,
+            fontSize: 14,
+            fontWeight: "600",
+            fontFamily: "sans-serif",
+            color: "#FFFFFF",
+            borderRadius: 10,
+            textDecoration: "none",
+          }}
+        />
+      </div>
+
+      <div className="containerInput">
+        <div className="forms">
+          <div className="rowInputSelect">
+            <Select
+              getOptionLabel={(option) => option.name}
+              getOptionValue={(option) => option.id}
+              styles={colourStyles}
+              options={options}
+              onChange={(option) => setStudentId(option.id)}
+              placeholder="Selecione o aluno"
+            />
+          </div>
+          <br></br>
+          <button
+            className="loading"
+            ref={microphoneRef}
+            onClick={isListening ? stopListening : handleListening}
+          >
+            {(isListening && <button className={styles.stopButton} />) || (
+              <img alt="button" className="micImg" src={mic}></img>
+            )}
+          </button>
+        </div>
+
+        <div className="bodyImg">
+          <img src={bodyImg} alt=""></img>
+        </div>
+      </div>
+    </LayoutBody>
+  );
+};

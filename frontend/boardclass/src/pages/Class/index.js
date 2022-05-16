@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { Link } from "react-router-dom";
 import Select from "react-select";
 import Alert from "react-popup-alert";
 import { Spinner } from "react-activity";
@@ -18,16 +17,19 @@ import titleIcon from "./images/classicon.png";
 import lineTitle from "./images/lineTitle.png";
 import buttonInput from "./images/buttonInput.png";
 import buttonSend from "./images/buttonSend.png";
+import mic from "./images/mic-white.png";
 import api from "../../services/api";
 
 export const Class = () => {
   const { transcript, resetTranscript } = useSpeechRecognition();
   const microphoneRef = useRef(null);
+  const microphoneRef2 = useRef(null);
 
   const [isListening, setIsListening] = useState(false);
+  const [isListening2, setIsListening2] = useState(false);
   const [subjectId, setSubjectId] = useState(0);
   const [text, setText] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [text2, setText2] = useState("");
   const [alert, setAlert] = useState({
     type: "warning",
     text: "alert message",
@@ -48,8 +50,37 @@ export const Class = () => {
       }
     }
 
+    function classes() {
+      if (text2.includes("criar") || text2.includes("cadastrar")) {
+        handleCreateClass();
+      }
+    }
+
     getSubjects();
-  }, []);
+    classes();
+  }, [text2]);
+
+  const handleCreateClass = async () => {
+    if (text === "" || subjectId === "") {
+      onShowAlert("warning", 0);
+    } else {
+      let name = text;
+      let subject_id = subjectId;
+
+      try {
+        await api.post("classes", { name, subject_id });
+
+        setTimeout(() => {
+          onShowAlert("warning", 2);
+          setTimeout(() => {
+            window.location.href = "/Help";
+          }, 3000);
+        }, 1000);
+      } catch (e) {
+        onShowAlert("warning", 1);
+      }
+    }
+  };
 
   const handleListening = () => {
     setIsListening(true);
@@ -69,6 +100,27 @@ export const Class = () => {
       setText(transcript);
     } else {
       setText(transcript);
+    }
+    resetTranscript();
+  };
+  const handleListening2 = () => {
+    setIsListening2(true);
+    microphoneRef2.current.classList.add("listening");
+    SpeechRecognition.startListening({
+      continuous: true,
+    });
+  };
+
+  const stopListening2 = () => {
+    microphoneRef2.current.classList.remove("listening");
+    SpeechRecognition.stopListening();
+    setIsListening2(false);
+    resetTranscript();
+    if (text2) {
+      setText2("");
+      setText2(transcript);
+    } else {
+      setText2(transcript);
     }
     resetTranscript();
   };
@@ -96,31 +148,6 @@ export const Class = () => {
       </div>
     );
   }
-
-  const handleCreateClass = async () => {
-    if (text === "" || subjectId === "") {
-      onShowAlert("warning", 0);
-    } else {
-      setLoading(true);
-
-      let name = text;
-      let subject_id = subjectId;
-
-      try {
-        await api.post("classes", { name, subject_id });
-
-        setTimeout(() => {
-          onShowAlert("warning", 2);
-          setLoading(false);
-          setTimeout(() => {
-            window.location.href = "/Help";
-          }, 1000);
-        }, 2000);
-      } catch (e) {
-        onShowAlert("warning", 1);
-      }
-    }
-  };
 
   const colourStyles = {
     control: (styles) => ({
@@ -228,24 +255,14 @@ export const Class = () => {
           </div>
           <br></br>
           <button
-            className="buttonSubmit"
-            onClick={handleCreateClass}
-            disabled={loading}
+            className="loading"
+            ref={microphoneRef2}
+            onClick={isListening2 ? stopListening2 : handleListening2}
           >
-            {(loading && (
-              <span className="loading">
-                <Spinner
-                  style={{
-                    height: 15,
-                    width: 15,
-                    color: "white",
-                  }}
-                />
-              </span>
-            )) || <img src={buttonSend} alt=""></img>}
+            {(isListening2 && <button className={styles.stopButton} />) || (
+              <img alt="button" className="micImg" src={mic}></img>
+            )}
           </button>
-          {/* <Link to="/Help">
-          </Link> */}
         </div>
 
         <div className="bodyImg">

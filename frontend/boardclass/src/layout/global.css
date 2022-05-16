@@ -285,13 +285,16 @@ Link {
 
 /* -- */
 .loading {
-  width: 84px;
-  height: 34px;
+  min-width: 80px;
+  min-height: 30px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #90c1c1;
+  outline: none;
+  border: 0;
+  margin-left: 52.5vh;
 }
 
 .homeButton {
@@ -299,4 +302,9 @@ Link {
   cursor: pointer;
   outline: none;
   border: none;
+}
+
+.micImg {
+  height: 20px;
+  width: 15px;
 }

@@ -67,6 +67,7 @@ export const Home = () => {
 
   if (
     transcript.includes("cadastrar disciplina") ||
+    transcript.includes("criar disciplina") ||
     transcript.includes("disciplina")
   ) {
     window.location.href = "/discipline";
@@ -77,7 +78,9 @@ export const Home = () => {
     window.location.href = "/class";
   } else if (
     transcript.includes("adicionar aluno") ||
-    transcript.includes("acrescentar aluno")
+    transcript.includes("acrescentar aluno") ||
+    transcript.includes("cadastrar aluno") ||
+    transcript.includes("criar aluno")
   ) {
     window.location.href = "/student";
   } else if (
