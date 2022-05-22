@@ -113,6 +113,27 @@ html {
   margin-left: 14px;
 }
 
+.classTitle {
+  display: flex;
+  font-family: "NanumGothic", sans-serif;
+  font-size: 100%;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  justify-content: center;
+  background: rgba(26, 187, 187, 1);
+  line-height: 35px;
+  color: #ffffff;
+  width: auto;
+  height: 35px;
+  max-width: 220px;
+  max-height: 50px;
+  min-width: 150px;
+  padding: 2px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
 .forms {
   display: flex;
   flex-direction: column;
@@ -213,6 +234,15 @@ html {
   overflow: hidden;
 }
 
+.containerInfo {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  min-height: 520px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
 .bodyImg {
   display: flex;
   margin-top: 25vh;
@@ -277,6 +307,94 @@ html {
   min-height: 30%;
   min-width: 30%;
   margin-top: 3vh;
+}
+
+.cardContainerClass{
+  display: flex;
+}
+
+.cardClass {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  align-items: center;
+  height: 34vh;
+  width: 11vw;
+  border-radius: 10px;
+  margin-right: 4vh;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 14px;
+}
+
+.cardClass img{
+  margin: 10px 0 10px 0;
+  height: 70px;
+}
+
+.cardClass li{
+  font-family: "NanumGothic", sans-serif;
+  font-style: Regular;
+  line-height: 7px;
+  color: #3A7B7B;
+}
+
+.cardClass hr{
+  color: #90C1C1;
+  border: 1px solid;
+}
+
+.classBox {
+  margin-left: 10.5vh;
+}
+
+.classInfo {
+  font-family: "NanumGothic", sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+  background: #ffffff;
+  line-height: 33px;
+  color: #929292;
+  height: 35px;
+  padding: 2px 0 2px 0;
+  width: 380px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.classInfo span {
+  margin-left: 14px;
+}
+
+.examInfo {
+  width: 100%;
+  list-style-type: none;
+}
+
+.labInfo {
+  width: 100%;
+  list-style-type: none;
+}
+
+.studentList {
+  display: flex;
+  flex-direction: column;
+  background: #c0dfdf;
+  height: 52vh;
+  width: 32vw;
+  border-radius: 10px;
+  margin-right: 4vh;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  list-style-type: none;
+  padding: 16px 50px 16px 16px;
+  color: #3A7B7B;
+  font-family: "NanumGothic", sans-serif;
+  font-style: Regular;
+}
+
+.studentList hr{
+  width: 100%;
+  border: 1px solid;
+  color: #90C1C1;
 }
 
 Link {
