@@ -1,8 +1,8 @@
 import test from 'japa'
-import supertest from 'supertest'
+// import supertest from 'supertest'
 import Database from '@ioc:Adonis/Lucid/Database'
 
-const BASE_URL = `http://${process.env.HOST}:${process.env.PORT}/api`
+// const BASE_URL = `http://${process.env.HOST}:${process.env.PORT}/api`
 
 test.group('Subject', (group) => {
   // test('it should create an subject', async (assert) => {

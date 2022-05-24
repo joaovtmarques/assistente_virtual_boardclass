@@ -2,7 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Subject from 'App/Models/Subject'
 
 export default class SubjectsController {
-  public async index({ request, response }: HttpContextContract) {
+  public async index({ response }: HttpContextContract) {
     const subjects = await Subject.all()
 
     return response.ok({ subjects })
@@ -16,7 +16,7 @@ export default class SubjectsController {
     return response.created({ subject })
   }
 
-  public async show({ request, response }: HttpContextContract) {
+  public async show({ response }: HttpContextContract) {
     return response.ok({})
   }
 

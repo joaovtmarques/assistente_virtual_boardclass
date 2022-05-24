@@ -1,27 +1,27 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class LaboratoriesController {
-  public async index({ request, response }: HttpContextContract) {
+  public async index({ response }: HttpContextContract) {
     return response.ok({})
   }
 
-  public async store({ request, response }: HttpContextContract) {
+  public async store({ response }: HttpContextContract) {
     return response.ok({})
   }
 
-  public async show({ request, response }: HttpContextContract) {
+  public async show({ response }: HttpContextContract) {
     return response.ok({})
   }
 
-  public async update({ request, response }: HttpContextContract) {
+  public async update({ response }: HttpContextContract) {
     return response.ok({})
   }
 
-  public async destroy({ request, response }: HttpContextContract) {
+  public async destroy({ response }: HttpContextContract) {
     return response.ok({})
   }
 
-  public async scheduleLaboratory({ request, response }: HttpContextContract) {
+  public async scheduleLaboratory({ response }: HttpContextContract) {
     return response.ok({})
   }
 }

@@ -1,13 +1,4 @@
-import {
-  BaseModel,
-  column,
-  HasMany,
-  hasMany,
-  HasOne,
-  hasOne,
-  ManyToMany,
-  manyToMany,
-} from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 
 import Student from './Student'
 import Subject from 'App/Models/Subject'

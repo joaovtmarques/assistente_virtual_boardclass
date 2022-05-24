@@ -1,15 +1,15 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class EvaluationsController {
-  public async index({ request, response }: HttpContextContract) {
+  public async index({ response }: HttpContextContract) {
     return response.ok({})
   }
 
-  public async store({ request, response }: HttpContextContract) {
+  public async store({ response }: HttpContextContract) {
     return response.ok({})
   }
 
-  public async destroy({ request, response }: HttpContextContract) {
+  public async destroy({ response }: HttpContextContract) {
     return response.ok({})
   }
 }

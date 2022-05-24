@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  BASE_URL: "http://192.168.1.70:3333/api",
+  BASE_URL: "http://172.26.48.1:3333/api",
   messages: [
     {
       message:

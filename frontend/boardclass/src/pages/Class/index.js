@@ -1,24 +1,23 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Spinner } from "react-activity";
+import Alert from "react-popup-alert";
+import Select from "react-select";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import Select from "react-select";
-import Alert from "react-popup-alert";
-import { Spinner } from "react-activity";
-import "react-activity/dist/library.css";
+
 import Globals from "../../global/Globals";
-
-import styles from "../Home/home.module.css";
-
 import { LayoutBody } from "../../layout";
-
-import bodyImg from "./images/classimg.png";
-import titleIcon from "./images/classicon.png";
-import lineTitle from "./images/lineTitle.png";
+import api from "../../services/api";
+import styles from "../Home/home.module.css";
 import buttonInput from "./images/buttonInput.png";
 import buttonSend from "./images/buttonSend.png";
+import titleIcon from "./images/classicon.png";
+import bodyImg from "./images/classimg.png";
+import lineTitle from "./images/lineTitle.png";
 import mic from "./images/mic-white.png";
-import api from "../../services/api";
+
+import "react-activity/dist/library.css";
 
 export const Class = () => {
   const { transcript, resetTranscript } = useSpeechRecognition();
@@ -42,13 +41,15 @@ export const Class = () => {
       try {
         const subjects = await api.get("subjects", {});
 
-        setOptions(subjects.data.subjects);
+        console.log(subjects);
 
-        console.log(subjects.data.subjects);
+        setOptions(subjects.data.subjects);
       } catch (e) {
         onShowAlert("warning", 3);
       }
     }
+
+    console.log(options);
 
     function classes() {
       if (text2.includes("criar") || text2.includes("cadastrar")) {
@@ -58,6 +59,7 @@ export const Class = () => {
 
     getSubjects();
     classes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text2]);
 
   const handleCreateClass = async () => {
