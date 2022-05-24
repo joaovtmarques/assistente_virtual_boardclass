@@ -14,9 +14,9 @@ export default {
     },
     swaggerDefinition: {
       info: {
-        title: 'PrivyApps Back-end',
+        title: 'BoardClass Back-end',
         version: '1.0.0',
-        description: 'PrivyApps documentation',
+        description: 'BoardClass documentation',
       },
       components: {
         securitySchemes: {

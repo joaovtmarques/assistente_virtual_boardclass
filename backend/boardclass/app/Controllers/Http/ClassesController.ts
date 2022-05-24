@@ -12,38 +12,6 @@ export default class ClassesController {
     return response.ok({ classes })
   }
 
-  /**
-   * @swagger
-   * /api/users:
-   * post:
-   *     tags:
-   *       - Users
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           description: User payload
-   *           schema:
-   *             type: object
-   *             properties:
-   *               phone:
-   *                 type: string
-   *                 example: 'James Bond'
-   *                 required: true
-   *               email:
-   *                 type: string
-   *                 example: 'Bond007@example.com'
-   *                 required: true
-   *     produces:
-   *       - application/json
-   *     responses:
-   *       200:
-   *         description: Success
-   *         content:
-   *           application/json:
-   *             schema:
-   *               $ref: '#/components/schemas/User'
-   */
   public async store({ request, response }: HttpContextContract) {
     const payload = request.only(['name', 'subject_id'])
 
