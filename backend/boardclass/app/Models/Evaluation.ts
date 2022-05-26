@@ -5,7 +5,7 @@ export default class Evaluation extends BaseModel {
   public id: Number
 
   @column()
-  public date: Date
+  public date: String
 
   @column()
   public subject_id: Number
