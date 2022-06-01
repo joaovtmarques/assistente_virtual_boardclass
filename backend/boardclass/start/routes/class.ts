@@ -16,5 +16,8 @@ Route.group(() => {
 
     // delete class by id
     Route.delete('/:id', 'ClassesController.destroy')
+
+    // list labs scheduled for class
+    Route.get('/:id/laboratories', 'ClassesController.listLaboratories')
   }).prefix('/classes')
 }).prefix('/api')

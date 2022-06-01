@@ -74,4 +74,16 @@ export default class ClassesController {
 
     return response.ok({})
   }
+
+  public async listLaboratories({ request, response }: HttpContextContract) {
+    const id = request.param('id')
+
+    const classExists = await Class.findBy('id', id)
+
+    if (!classExists) throw new BadRequest('resource not found', 404)
+
+    await classExists.load('laboratories')
+
+    return response.ok({ class: classExists })
+  }
 }
