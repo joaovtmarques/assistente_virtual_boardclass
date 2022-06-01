@@ -133,7 +133,7 @@ export const Help = () => {
             </div>
             <div className="cardTitle">
               <Link
-                to="/Notes"
+                to="/Note"
                 style={{ textDecoration: "none", color: "white" }}
               >
                 <span>Anotações</span>

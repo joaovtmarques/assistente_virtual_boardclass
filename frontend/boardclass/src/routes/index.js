@@ -8,6 +8,7 @@ import { Lab } from "../pages/Lab";
 import { Show } from "../pages/Show";
 import { Remove } from "../pages/Remove";
 import { Notes } from "../pages/Notes";
+import { Note } from "../pages/Note";
 import { Help } from "../pages/Help";
 
 export const AppRoutes = () => {
@@ -23,6 +24,7 @@ export const AppRoutes = () => {
                 <Route path="/Show" exact element={<Show />}/>
                 <Route path="/Remove" exact element={<Remove />}/>
                 <Route path="/Notes" exact element={<Notes />}/>
+                <Route path="/Note" exact element={<Note />}/>
                 <Route path="/Help" exact element={<Help />}/>
             </Routes>
         </Router>
