@@ -74,7 +74,7 @@ test.group('Evaluation', (group) => {
     await supertest(BASE_URL).delete(`/evaluations/${evaluation.id}`).send({}).expect(200)
   })
 
-  test.only('it should return 404 when evaluation id is not valid', async (assert) => {
+  test('it should return 404 when evaluation id is not valid', async (assert) => {
     const { body } = await supertest(BASE_URL).delete(`/evaluations/0`).send({}).expect(404)
 
     assert.equal(body.code, 'BAD_REQUEST')
