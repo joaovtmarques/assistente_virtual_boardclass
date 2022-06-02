@@ -1,17 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Spinner } from "react-activity";
 import Alert from "react-popup-alert";
 import Select from "react-select";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 import Globals from "../../global/Globals";
 import { LayoutBody } from "../../layout";
 import api from "../../services/api";
 import styles from "../Home/home.module.css";
 import buttonInput from "./images/buttonInput.png";
-import buttonSend from "./images/buttonSend.png";
 import titleIcon from "./images/classicon.png";
 import bodyImg from "./images/classimg.png";
 import lineTitle from "./images/lineTitle.png";

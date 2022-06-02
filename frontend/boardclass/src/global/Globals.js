@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  BASE_URL: "http://172.26.48.1:3333/api",
+  BASE_URL: "http://192.168.1.68:3333/api",
   messages: [
     {
       message:
@@ -23,6 +23,10 @@ export default {
     },
     {
       message: "Erro na busca de turmas. Por favor, recarregue a página :(",
+    },
+    {
+      message:
+        "Ah não! :( Parece que tivemos um problema para cadastrar a disciplina.",
     },
   ],
 };
