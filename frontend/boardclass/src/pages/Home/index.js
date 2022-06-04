@@ -16,6 +16,9 @@ export const Home = () => {
   const { speak } = useSpeechSynthesis();
 
   const [isListening, setIsListening] = useState(false);
+  const [textSpeek, setTextSpeek] = useState(
+    "Olá! Sou o assistente BoardClass. Você pode pressionar o botão azul ao lado e me dar um comando por voz!"
+  );
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
   const microphoneRef = useRef(null);
@@ -36,16 +39,16 @@ export const Home = () => {
   function onShowAlert(type) {
     setAlert({
       type: type,
-      text: "Olá! Sou a assistente BoardClass. Você pode pressionar o botão azul ao lado e me dar um comando por voz! ;)",
+      text: "Olá! Sou o assistente BoardClass. Você pode pressionar o botão azul ao lado e me dar um comando por voz! ;)",
       show: true,
     });
   }
 
   useEffect(() => {
-    speak({
-      text: "Olá! Sou a assistente BoardClass. Você pode pressionar o botão azul ao lado e me dar um comando por voz!",
-    });
     setTimeout(() => {
+      speak({
+        text: textSpeek,
+      });
       onShowAlert("warning");
     }, 1500);
   }, []);

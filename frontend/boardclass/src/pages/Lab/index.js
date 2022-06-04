@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import Alert from "react-popup-alert";
-import { Link } from "react-router-dom";
 import Select from "react-select";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -11,8 +10,6 @@ import Globals from "../../global/Globals";
 import { LayoutBody } from "../../layout";
 import api from "../../services/api";
 import styles from "../Home/home.module.css";
-import buttonInput from "./images/buttonInput.png";
-import buttonSend from "./images/buttonSend.png";
 import titleIcon from "./images/labicon.png";
 import bodyImg from "./images/labImg.png";
 import lineTitle from "./images/lineTitle.png";
@@ -210,7 +207,7 @@ export const Lab = () => {
         <div className="forms">
           <div className="rowInput">
             <Select
-              getOptionLabel={(option) => `Disciplina: ${option.name}`}
+              getOptionLabel={(option) => `Laboratório: ${option.name}`}
               getOptionValue={(option) => option.id}
               styles={colourStyles}
               options={labs}

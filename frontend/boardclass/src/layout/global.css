@@ -252,6 +252,10 @@ html {
   align-items: center;
   height: 32vh;
   width: 32vw;
+  min-height: 200px;
+  min-width: 300px;
+  max-height: 200px;
+  max-width: 300px;
   border-radius: 10px;
   margin-right: 4vh;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -451,4 +455,41 @@ Link {
 .cardClass hr {
   color: #90c1c1;
   border: 1px solid;
+}
+
+.card span {
+  max-height: 1px;
+  border: 1px solid #90c1c1;
+  margin-top: 15px;
+  width: 90%;
+  background-color: #90c1c1;
+}
+
+.containerNoteText {
+  display: flex;
+  height: 99vh;
+  width: 100vw;
+  background: #cddcdc;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.noteTextCard {
+  font-size: 100%;
+  background: #ffffff;
+  padding: 20px;
+  min-width: 500px;
+  max-width: 500px;
+  min-height: 400px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-left: 70px;
+}
+
+.noteTextCard span {
+  font-family: "NanumGothic", sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+  color: #929292;
+  line-height: 33px;
 }

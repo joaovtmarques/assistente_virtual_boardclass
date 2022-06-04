@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  BASE_URL: "http://172.19.192.1:3333/api",
+  BASE_URL: "http://192.168.1.71:3333/api",
   messages: [
     {
       message:
@@ -46,6 +46,16 @@ export default {
     {
       message:
         "Ah não! :( Parece que tivemos um problema para reservar o laboratório.",
+    },
+    {
+      message: "Erro na busca das anotações. Por favor, recarregue a página :(",
+    },
+    {
+      message: "Erro na busca da anotação. Por favor, recarregue a página :(",
+    },
+    {
+      message:
+        "Ah não! :( Parece que tivemos um problema para criar sua anotação.",
     },
   ],
 };

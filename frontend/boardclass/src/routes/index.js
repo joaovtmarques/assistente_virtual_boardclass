@@ -12,6 +12,7 @@ import { Remove } from "../pages/Remove";
 import { Show } from "../pages/Show";
 import { ShowInfo } from "../pages/ShowInfo";
 import { Student } from "../pages/Student";
+import { ShowNote } from "../pages/ShowNote";
 
 export const AppRoutes = () => {
   return (
@@ -29,6 +30,7 @@ export const AppRoutes = () => {
         <Route path="/Note" exact element={<Note />} />
         <Route path="/Help" exact element={<Help />} />
         <Route path="/ShowInfo/:classId" exact element={<ShowInfo />} />
+        <Route path="/ShowNote/:noteId" exact element={<ShowNote />} />
       </Routes>
     </Router>
   );
