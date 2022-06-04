@@ -6,4 +6,7 @@ export default class Note extends BaseModel {
 
   @column()
   public note: String
+
+  @column()
+  public date: String
 }

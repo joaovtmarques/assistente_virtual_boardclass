@@ -5,6 +5,9 @@ Route.group(() => {
     // list all notes
     Route.get('/', 'NotesController.index')
 
+    // get an note by id
+    Route.get('/:id', 'NotesController.show')
+
     // register a new note
     Route.post('/', 'NotesController.store')
 
