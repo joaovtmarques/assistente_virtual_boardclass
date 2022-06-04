@@ -37,8 +37,6 @@ export const Class = () => {
       try {
         const subjects = await api.get("subjects", {});
 
-        console.log(subjects);
-
         setOptions(subjects.data.subjects);
       } catch (e) {
         onShowAlert("warning", 3);

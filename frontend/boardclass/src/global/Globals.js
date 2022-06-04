@@ -35,5 +35,13 @@ export default {
     {
       message: "Você precisa selecionar o aluno para continuarmos! ;)",
     },
+    {
+      message:
+        "Erro na busca de disciplinas e turmas. Por favor, recarregue a página :(",
+    },
+    {
+      message:
+        "Ah não! :( Parece que tivemos um problema para adicionar sua prova.",
+    },
   ],
 };
