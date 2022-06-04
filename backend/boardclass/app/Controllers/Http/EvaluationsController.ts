@@ -22,7 +22,12 @@ export default class EvaluationsController {
 
     if (!subjectExists || !classExists) throw new BadRequest('resource not found', 404)
 
-    const evaluation = await Evaluation.create(payload)
+    const evaluation = await Evaluation.create({
+      date: payload.date,
+      subject_id: payload.subject_id,
+    })
+
+    await evaluation.related('classes').attach([payload.class_id])
 
     return response.created({ evaluation })
   }
