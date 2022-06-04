@@ -1,14 +1,15 @@
-import { LayoutBody } from "../../layout";
 import { Link } from "react-router-dom";
-import disciplineIMG from "./images/discipline.png";
+
+import { LayoutBody } from "../../layout";
 import classIMG from "./images/class.png";
-import studentIMG from "./images/student.png";
-import removeIMG from "./images/remove.png";
-import showIMG from "./images/show.png";
+import disciplineIMG from "./images/discipline.png";
 import examIMG from "./images/exam.png";
+import homeIMG from "./images/home.png";
 import labIMG from "./images/lab.png";
 import notesIMG from "./images/notes.png";
-import homeIMG from "./images/home.png";
+import removeIMG from "./images/remove.png";
+import showIMG from "./images/show.png";
+import studentIMG from "./images/student.png";
 
 export const Help = () => {
   function handleRedirect() {

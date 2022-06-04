@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Alert from "react-popup-alert";
 import { Link } from "react-router-dom";
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 import Globals from "../../global/Globals";
 import { LayoutBody } from "../../layout";
@@ -11,8 +13,7 @@ import bodyImg from "./images/books.png";
 import buttonInput from "./images/buttonInput.png";
 import titleIcon from "./images/icondisci.png";
 import lineTitle from "./images/lineTitle.png";
-import mic from "./images/mic-white.png";
-
+import mic from "../../assets/mic-white.png";
 export const Discipline = () => {
   const { transcript, resetTranscript } = useSpeechRecognition();
   const microphoneRef = useRef(null);

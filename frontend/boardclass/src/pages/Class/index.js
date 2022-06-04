@@ -3,6 +3,7 @@ import Alert from "react-popup-alert";
 import Select from "react-select";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
+import mic from "../../assets/mic-white.png";
 import Globals from "../../global/Globals";
 import { LayoutBody } from "../../layout";
 import api from "../../services/api";
@@ -11,7 +12,6 @@ import buttonInput from "./images/buttonInput.png";
 import titleIcon from "./images/classicon.png";
 import bodyImg from "./images/classimg.png";
 import lineTitle from "./images/lineTitle.png";
-import mic from "./images/mic-white.png";
 
 import "react-activity/dist/library.css";
 
@@ -44,8 +44,6 @@ export const Class = () => {
         onShowAlert("warning", 3);
       }
     }
-
-    console.log(options);
 
     function classes() {
       if (text2.includes("criar") || text2.includes("cadastrar")) {
@@ -101,6 +99,7 @@ export const Class = () => {
     }
     resetTranscript();
   };
+
   const handleListening2 = () => {
     setIsListening2(true);
     microphoneRef2.current.classList.add("listening");

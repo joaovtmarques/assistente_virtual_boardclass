@@ -28,5 +28,12 @@ export default {
       message:
         "Ah não! :( Parece que tivemos um problema para cadastrar a disciplina.",
     },
+    {
+      message:
+        "Ah não! :( Parece que tivemos um problema para remover o aluno.",
+    },
+    {
+      message: "Você precisa selecionar o aluno para continuarmos! ;)",
+    },
   ],
 };

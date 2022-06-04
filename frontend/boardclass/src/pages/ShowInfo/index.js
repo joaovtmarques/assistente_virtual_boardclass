@@ -1,32 +1,39 @@
-import { LayoutBody } from "../../layout";
-import { Link } from "react-router-dom";
-import titleIcon from "./images/infoicon.png";
-import lineTitle from "./images/lineTitle.png";
-import infoExam from "./images/infoExam.png";
-import infoLab from "./images/infoLab.png";
-import React, { useRef, useState } from "react";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
-import api from "../../services/api";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Select from "react-select";
+
 import Globals from "../../global/Globals";
+import { LayoutBody } from "../../layout";
+import api from "../../services/api";
+import infoExam from "./images/infoExam.png";
+import titleIcon from "./images/infoicon.png";
+import infoLab from "./images/infoLab.png";
+import lineTitle from "./images/lineTitle.png";
 
 export const ShowInfo = () => {
-  const [loading, setLoading] = useState(false);
-  const [text, setText] = useState(false);
+  const params = useParams();
+
+  const [classInfo, setClassInfo] = useState(null);
+  const [labs, setLabs] = useState(null);
   const [alert, setAlert] = useState({
     type: "warning",
     text: "alert message",
     show: false,
   });
 
-  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    return (
-      <div className="notSupportContainer">
-        Browser is not Support Speech Recognition.
-      </div>
-    );
-  }
+  useEffect(() => {
+    const getClassInfo = async () => {
+      let data = await api.get(`classes/${params.classId}`);
+
+      setClassInfo(data.data.class);
+
+      let labs = await api.get(`classes/${params.classId}/laboratories`);
+
+      setLabs(labs.data.laboratories);
+    };
+
+    getClassInfo();
+  }, []);
 
   function onShowAlert(type, index) {
     setAlert({
@@ -36,80 +43,92 @@ export const ShowInfo = () => {
     });
   }
 
-  const handleSearchClass = async () => {
-    if (text === "") {
-      onShowAlert("warning", 0);
-    } else {
-      setLoading(true);
-
-      let name = text;
-
-      try {
-        await api.get("classes", { name });
-
-        setTimeout(() => {
-          onShowAlert("warning", 2);
-          setLoading(false);
-          //   setTimeout(() => {
-          //     window.location.href = "/Help";
-          //   }, 1000);
-        }, 2000);
-      } catch (e) {
-        onShowAlert("warning", 1);
-      }
-    }
+  const colourStyles = {
+    control: (styles) => ({
+      flex: 1,
+      width: 420,
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      paddingTop: 0,
+    }),
   };
 
   return (
-    <LayoutBody>
-      <div className="titles">
-        <div className="title">
-          <img src={titleIcon} alt=""></img>
-          <img src={lineTitle} alt=""></img>
-          <span>Informações da Turma</span>
+    classInfo &&
+    labs && (
+      <LayoutBody>
+        <div className="titles">
+          <div className="title">
+            <img src={titleIcon} alt=""></img>
+            <img src={lineTitle} alt=""></img>
+            <span>Informações da Turma</span>
+          </div>
         </div>
 
-      </div>
-      
-      <div class="containerInfo">
-        <div class="classBox">
-          <div className="classTitle"><span>Turma A</span></div><br></br>
-          <div className="classInfo"><span>Alunos na turma: </span></div><br></br>
-          <div className="classInfo"><span>Disciplinas na Turma: </span></div><br></br>
-          <div className="cardContainerClass">
-            <div className="cardClass">
-              <img src={infoExam} alt=""></img>
-              <div className="examInfo">
-                <hr></hr>
-                <li>Provas</li><hr></hr>
-                <li>26/05</li><hr></hr>
-                <li>14/06</li><hr></hr>
+        <div class="containerInfo">
+          <div class="classBox">
+            <div className="classTitle">
+              <span>Nome da turma: {classInfo.name}</span>
+            </div>
+            <br></br>
+            <div className="classInfo">
+              <span>Alunos na turma: {classInfo.students.length}</span>
+            </div>
+            <br></br>
+            <div className="classInfo">
+              <span>Disciplina da Turma: {classInfo.subject[0].name}</span>
+            </div>
+            <br></br>
+            <div className="cardContainerClass">
+              <div className="cardClass">
+                <img src={infoExam} alt=""></img>
+                <div className="examInfo">
+                  <hr></hr>
+                  <li>Provas</li>
+                  <hr></hr>
+                  {classInfo.evaluations.map(function (item) {
+                    return <li>{item.date.slice(0, 5)}</li>;
+                  })}
+                </div>
+              </div>
+              <div className="cardClass">
+                <img src={infoLab} alt=""></img>
+                <div className="labInfo">
+                  <hr></hr>
+                  <li>Laboratório</li>
+                  <hr></hr>
+                  {labs.map(function (item) {
+                    return (
+                      <li>
+                        Lab {item.laboratory_id} - {item.date.slice(0, 5)}
+                      </li>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-            <div className="cardClass">
-              <img src={infoLab} alt="" ></img>
-              <div className="labInfo">
-                <hr></hr>
-                <li>Laboratório</li><hr></hr>
-                <li>26/05</li><hr></hr>
-                <li>14/06</li><hr></hr>
+          </div>
+          <div class="classBox">
+            <div className="classTitle">
+              <span>Lista de alunos</span>
+            </div>
+            <br></br>
+            <div className="cardContainerClass">
+              <div className="studentList">
+                {classInfo.students.map(function (item) {
+                  return (
+                    <>
+                      <hr></hr>
+                      <li>{item.name}</li>
+                    </>
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
-        <div class="classBox">
-          <div className="classTitle"><span>Lista de alunos</span></div><br></br>
-          <div className="cardContainerClass">
-            <div className="studentList">
-              <hr></hr>
-              <li>Silas Prado</li><hr></hr>
-              <li>Luciano Pamplona</li><hr></hr>
-              <li>Joao Vitor Marques</li><hr></hr>
-              <li>Gheovanna Pantaleao</li><hr></hr>
-            </div>
-          </div>
-        </div>
-      </div>
-    </LayoutBody>
+      </LayoutBody>
+    )
   );
 };
