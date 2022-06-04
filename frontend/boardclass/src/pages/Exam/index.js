@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Alert from "react-popup-alert";
-import { Link } from "react-router-dom";
 import Select from "react-select";
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 import mic from "../../assets/mic-white.png";
 import Globals from "../../global/Globals";

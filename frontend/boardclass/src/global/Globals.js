@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  BASE_URL: "http://192.168.1.68:3333/api",
+  BASE_URL: "http://172.19.192.1:3333/api",
   messages: [
     {
       message:
@@ -42,6 +42,10 @@ export default {
     {
       message:
         "Ah não! :( Parece que tivemos um problema para adicionar sua prova.",
+    },
+    {
+      message:
+        "Ah não! :( Parece que tivemos um problema para reservar o laboratório.",
     },
   ],
 };

@@ -82,25 +82,27 @@ export const ShowInfo = () => {
             <br></br>
             <div className="cardContainerClass">
               <div className="cardClass">
-                <img src={infoExam} alt=""></img>
-                <div className="examInfo">
-                  <hr></hr>
-                  <li>Provas</li>
+                <div className="img">
+                  <img src={infoExam} alt=""></img>
+                </div>
+                <div className="labInfo">
+                  <li className="li-title">Provas</li>
                   <hr></hr>
                   {classInfo.evaluations.map(function (item) {
-                    return <li>{item.date.slice(0, 5)}</li>;
+                    return <li className="li">{item.date.slice(0, 5)}</li>;
                   })}
                 </div>
               </div>
               <div className="cardClass">
-                <img src={infoLab} alt=""></img>
+                <div className="img">
+                  <img src={infoLab} alt=""></img>
+                </div>
                 <div className="labInfo">
-                  <hr></hr>
-                  <li>Laboratório</li>
+                  <li className="li-title">Laboratório</li>
                   <hr></hr>
                   {labs.map(function (item) {
                     return (
-                      <li>
+                      <li className="li">
                         Lab {item.laboratory_id} - {item.date.slice(0, 5)}
                       </li>
                     );
@@ -119,8 +121,7 @@ export const ShowInfo = () => {
                 {classInfo.students.map(function (item) {
                   return (
                     <>
-                      <hr></hr>
-                      <li>{item.name}</li>
+                      <li className="li">{item.name}</li>
                     </>
                   );
                 })}

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Alert from "react-popup-alert";
 import { Link } from "react-router-dom";
+import { SpeechSynthesisVoice, useSpeechSynthesis } from "react-speech-kit";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -11,6 +12,9 @@ import mic from "./images/mic.png";
 
 export const Home = () => {
   const { transcript, resetTranscript } = useSpeechRecognition();
+
+  const { speak } = useSpeechSynthesis();
+
   const [isListening, setIsListening] = useState(false);
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
@@ -38,6 +42,9 @@ export const Home = () => {
   }
 
   useEffect(() => {
+    speak({
+      text: "Olá! Sou a assistente BoardClass. Você pode pressionar o botão azul ao lado e me dar um comando por voz!",
+    });
     setTimeout(() => {
       onShowAlert("warning");
     }, 1500);
