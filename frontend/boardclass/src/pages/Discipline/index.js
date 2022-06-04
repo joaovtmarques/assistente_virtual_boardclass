@@ -1,25 +1,47 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Alert from "react-popup-alert";
 import { Link } from "react-router-dom";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 
+import Globals from "../../global/Globals";
 import { LayoutBody } from "../../layout";
+import api from "../../services/api";
 import styles from "../Home/home.module.css";
 import bodyImg from "./images/books.png";
 import buttonInput from "./images/buttonInput.png";
-import buttonSend from "./images/buttonSend.png";
 import titleIcon from "./images/icondisci.png";
 import lineTitle from "./images/lineTitle.png";
-
+import mic from "../../assets/mic-white.png";
 export const Discipline = () => {
   const { transcript, resetTranscript } = useSpeechRecognition();
-  const [isListening, setIsListening] = useState(false);
-  const [isListening2, setIsListening2] = useState(false);
-  const [text1, setText1] = useState("");
-  const [text2, setText2] = useState("");
   const microphoneRef = useRef(null);
   const microphoneRef2 = useRef(null);
+  const microphoneRef3 = useRef(null);
+
+  const [isListening, setIsListening] = useState(false);
+  const [isListening2, setIsListening2] = useState(false);
+  const [isListening3, setIsListening3] = useState(false);
+  const [text1, setText1] = useState("");
+  const [text2, setText2] = useState("");
+  const [text3, setText3] = useState("");
+  const [alert, setAlert] = useState({
+    type: "warning",
+    text: "alert message",
+    show: false,
+  });
+
+  useEffect(() => {
+    function disciplines() {
+      if (text3.includes("criar") || text3.includes("cadastrar")) {
+        handleCreateDiscipline();
+      }
+    }
+
+    disciplines();
+  }, [text3]);
+
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return (
       <div className="notSupportContainer">
@@ -72,6 +94,65 @@ export const Discipline = () => {
     resetTranscript();
   };
 
+  const handleListening3 = () => {
+    setIsListening3(true);
+    microphoneRef3.current.classList.add("listening");
+    SpeechRecognition.startListening({
+      continuous: true,
+    });
+  };
+
+  const stopListening3 = () => {
+    if (text3) {
+      setText3("");
+      setText3(transcript);
+    } else {
+      setText3(transcript);
+    }
+    setIsListening3(false);
+    microphoneRef3.current.classList.remove("listening");
+    SpeechRecognition.stopListening();
+    resetTranscript();
+  };
+
+  function onCloseAlert(help) {
+    setAlert({
+      type: "",
+      text: "",
+      show: false,
+    });
+  }
+
+  function onShowAlert(type, index) {
+    setAlert({
+      type: type,
+      text: Globals.messages[index].message,
+      show: true,
+    });
+  }
+
+  const handleCreateDiscipline = async () => {
+    if (text1 === "" || text2 === "") {
+      onShowAlert("warning", 0);
+    } else {
+      const name = text1;
+      const description = text2;
+
+      try {
+        await api.post("subjects", { name, description });
+
+        setTimeout(() => {
+          onShowAlert("warning", 2);
+          setTimeout(() => {
+            window.location.href = "/Help";
+          }, 3000);
+        }, 1000);
+      } catch (e) {
+        onShowAlert("warning", 6);
+      }
+    }
+  };
+
   return (
     <LayoutBody>
       <div className="titles">
@@ -85,7 +166,55 @@ export const Discipline = () => {
           <span>Para cadastrar uma disciplina, preencha os campos:</span>
         </div>
       </div>
-
+      <div className={styles.alertContainer2}>
+        <Alert
+          header={""}
+          btnText={"Entendi :)"}
+          text={alert.text}
+          type={alert.type}
+          show={alert.show}
+          onClosePress={onCloseAlert}
+          pressCloseOnOutsideClick={true}
+          showBorderBottom={true}
+          alertStyles={{
+            height: 160,
+            width: 200,
+            backgroundColor: "#1ABBBB",
+            padding: 15,
+            borderRadius: 15,
+            border: 0,
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+          headerStyles={{
+            display: "none",
+          }}
+          textStyles={{
+            textAlign: "center",
+            fontSize: 14,
+            fontWeight: "300",
+            fontFamily: "sans-serif",
+            color: "#FFFFFF",
+            padding: 0,
+          }}
+          buttonStyles={{
+            textAlign: "center",
+            paddingTop: 10,
+            paddingBottom: 10,
+            paddingRight: 15,
+            paddingLeft: 15,
+            fontSize: 14,
+            fontWeight: "600",
+            fontFamily: "sans-serif",
+            color: "#FFFFFF",
+            borderRadius: 10,
+            textDecoration: "none",
+          }}
+        />
+      </div>
       <div className="containerInput">
         <div className="forms">
           <div className="rowInput">
@@ -126,11 +255,15 @@ export const Discipline = () => {
             </button>
           </div>
           <br></br>
-          <Link to="/Help">
-            <button className="buttonSubmit">
-              <img src={buttonSend} alt=""></img>
-            </button>
-          </Link>
+          <button
+            className="loading"
+            ref={microphoneRef3}
+            onClick={isListening3 ? stopListening3 : handleListening3}
+          >
+            {(isListening3 && <button className={styles.stopButton} />) || (
+              <img alt="button" className="micImg" src={mic}></img>
+            )}
+          </button>
         </div>
 
         <div className="bodyImg">

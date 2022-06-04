@@ -1,143 +1,102 @@
+import { format } from "date-fns";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { LayoutBody } from "../../layout";
-import classIMG from "./images/class.png";
-import disciplineIMG from "./images/discipline.png";
-import examIMG from "./images/exam.png";
-import homeIMG from "./images/home.png";
-import labIMG from "./images/lab.png";
-import notesIMG from "./images/notes.png";
-import removeIMG from "./images/remove.png";
-import showIMG from "./images/show.png";
-import studentIMG from "./images/student.png";
 
-export const Help = () => {
-  function handleRedirect() {
-    window.location.href = "/";
-  }
-
+export const Note = () => {
   return (
     <LayoutBody>
       <div className="titles">
         <div className="header">
           <div className="title">Central de ajuda</div>
-          <div className="title">
-            <button onClick={handleRedirect} className="homeButton">
-              <img src={homeIMG} alt="Home" />
-            </button>
-          </div>
         </div>
 
         <div className="subTitleHelp">
           <span>Conheça nossas funcionalidades</span>
         </div>
       </div>
-
       <div className="containerHelp">
         <div className="cardbox">
           <div className="card">
-            <div className="cardImg">
-              <img src={disciplineIMG} alt=""></img>
-            </div>
             <div className="cardTitle">
               <Link
-                to="/Discipline"
+                to="/Notes"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <span>Cadastrar Disciplinas</span>
+                <p>{format(new Date(), "dd/MM/yy")}</p>
               </Link>
             </div>
           </div>
           <div className="card">
-            <div className="cardImg">
-              <img src={classIMG} alt=""></img>
-            </div>
             <div className="cardTitle">
               <Link
-                to="/Class"
+                to="/Notes"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <span>Criar Turma</span>
+                <p>{format(new Date(), "dd/MM/yy")}</p>
               </Link>
             </div>
           </div>
           <div className="card">
-            <div className="cardImg">
-              <img src={studentIMG} alt=""></img>
-            </div>
             <div className="cardTitle">
               <Link
-                to="/Student"
+                to="/Notes"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <span>Adicionar Alunos</span>
+                <p>{format(new Date(), "dd/MM/yy")}</p>
               </Link>
             </div>
           </div>
           <div className="card">
-            <div className="cardImg">
-              <img src={removeIMG} alt=""></img>
-            </div>
             <div className="cardTitle">
               <Link
-                to="/Remove"
+                to="/Notes"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <span>Remover Alunos</span>
+                <p>{format(new Date(), "dd/MM/yy")}</p>
               </Link>
             </div>
           </div>
         </div>
         <div className="cardbox">
           <div className="card">
-            <div className="cardImg">
-              <img src={showIMG} alt=""></img>
-            </div>
             <div className="cardTitle">
               <Link
-                to="/Show"
+                to="/Notes"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <span>Informações da Turma</span>
+                <p>{format(new Date(), "dd/MM/yy")}</p>
               </Link>
             </div>
           </div>
           <div className="card">
-            <div className="cardImg">
-              <img src={examIMG} alt=""></img>
-            </div>
             <div className="cardTitle">
               <Link
-                to="/Exam"
+                to="/Notes"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <span>Marcar Prova</span>
+                <p>{format(new Date(), "dd/MM/yy")}</p>
               </Link>
             </div>
           </div>
           <div className="card">
-            <div className="cardImg">
-              <img src={labIMG} alt=""></img>
-            </div>
             <div className="cardTitle">
               <Link
-                to="/Lab"
+                to="/Notes"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <span>Reservar Laboratório</span>
+                <p>{format(new Date(), "dd/MM/yy")}</p>
               </Link>
             </div>
           </div>
           <div className="card">
-            <div className="cardImg">
-              <img src={notesIMG} alt=""></img>
-            </div>
             <div className="cardTitle">
               <Link
-                to="/Note"
+                to="/Notes"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <span>Anotações</span>
+                <p>{format(new Date(), "dd/MM/yy")}</p>
               </Link>
             </div>
           </div>

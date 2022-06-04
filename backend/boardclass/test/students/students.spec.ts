@@ -1,16 +1,16 @@
 import Database from '@ioc:Adonis/Lucid/Database'
 import Class from 'App/Models/Class'
-import Subject from 'App/Models/Subject'
-import Student from 'App/Models/Student'
-import { ClassFactory, StudentFactory, SubjectFactory } from 'Database/factories'
+// import Subject from 'App/Models/Subject'
+// import Student from 'App/Models/Student'
+import { StudentFactory, SubjectFactory } from 'Database/factories'
 import test from 'japa'
 import supertest from 'supertest'
 
 const BASE_URL = `http://${process.env.HOST}:${process.env.PORT}/api`
 
-let student = {} as Student
+// let student = {} as Student
 let newClass = {} as Class
-let subject = {} as Subject
+// let subject = {} as Subject
 
 test.group('Student', (group) => {
   test('it should return all students', async (assert) => {
@@ -99,7 +99,7 @@ test.group('Student', (group) => {
 
     console.log(newSubject)
 
-    subject = newSubject.subject
+    // subject = newSubject.subject
 
     const { body } = await supertest(BASE_URL)
       .post('/classes')
@@ -113,20 +113,20 @@ test.group('Student', (group) => {
 
     newClass = body.class
 
-    const { name: studentName, ra } = await StudentFactory.create()
+    // const { name: studentName, ra } = await StudentFactory.create()
 
-    const studentPayload = {
-      name: studentName,
-      ra,
-      class_id: newClass.id,
-    }
+    // const studentPayload = {
+    //   name: studentName,
+    //   ra,
+    //   class_id: newClass.id,
+    // }
 
-    const { body: data } = await supertest(BASE_URL)
-      .post('/students')
-      .send(studentPayload)
-      .expect(201)
+    // const { body: data } = await supertest(BASE_URL)
+    //   .post('/students')
+    //   .send(studentPayload)
+    //   .expect(201)
 
-    student = data.student
+    // student = data.student
   })
   group.beforeEach(async () => {
     await Database.beginGlobalTransaction()

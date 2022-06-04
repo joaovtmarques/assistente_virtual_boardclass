@@ -8,10 +8,10 @@ Route.group(() => {
     // register a new subject
     Route.post('/', 'SubjectsController.store')
 
-    // get an subject by name
-    Route.get('/:name', 'SubjectsController.show')
+    // get an subject by id
+    Route.get('/:id', 'SubjectsController.show')
 
     // delete student by id
-    Route.get('/:id', 'SubjectsController.destroy')
+    Route.delete('/:id', 'SubjectsController.destroy')
   }).prefix('/subjects')
 }).prefix('/api')

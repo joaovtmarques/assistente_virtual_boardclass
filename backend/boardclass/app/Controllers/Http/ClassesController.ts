@@ -1,4 +1,6 @@
+import Laboratory from 'App/Models/Laboratory'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Database from '@ioc:Adonis/Lucid/Database'
 
 import BadRequest from 'App/Exceptions/BadRequestException'
 
@@ -34,12 +36,14 @@ export default class ClassesController {
   }
 
   public async show({ request, response }: HttpContextContract) {
-    const name = request.param('name')
+    const id = request.param('id')
 
-    const classExists = await Class.findByOrFail('name', name)
+    const classExists = await Class.findByOrFail('id', id)
 
     await classExists.load('subject')
     await classExists.load('students')
+    await classExists.load('laboratories')
+    await classExists.load('evaluations')
 
     return response.ok({ class: classExists })
   }
@@ -73,5 +77,17 @@ export default class ClassesController {
     classExists.delete()
 
     return response.ok({})
+  }
+
+  public async listLaboratories({ request, response }: HttpContextContract) {
+    const id = request.param('id')
+
+    const classExists = await Class.findBy('id', id)
+
+    if (!classExists) throw new BadRequest('resource not found', 404)
+
+    const labs = await Database.from('classes_laboratories').where('class_id', id)
+
+    return response.ok({ laboratories: labs })
   }
 }

@@ -1,17 +1,18 @@
-import { LayoutBody } from "../../layout";
-import Select from "react-select";
-import bodyImg from "./images/removeImg.png";
-import titleIcon from "./images/removeicon.png";
-import lineTitle from "./images/lineTitle.png";
 import React, { useEffect, useRef, useState } from "react";
+import Alert from "react-popup-alert";
+import Select from "react-select";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import Alert from "react-popup-alert";
-import styles from "../Home/home.module.css";
+
 import Globals from "../../global/Globals";
+import { LayoutBody } from "../../layout";
 import api from "../../services/api";
-import mic from "./images/mic-white.png";
+import styles from "../Home/home.module.css";
+import lineTitle from "./images/lineTitle.png";
+import mic from "../../assets/mic-white.png";
+import titleIcon from "./images/removeicon.png";
+import bodyImg from "./images/removeImg.png";
 
 export const Remove = () => {
   const { transcript, resetTranscript } = useSpeechRecognition();
@@ -45,26 +46,26 @@ export const Remove = () => {
       }
     }
 
-    async function students() {
-      if (transcript.includes("remover") || transcript.includes("aluno")) {
+    function students() {
+      if (text.includes("remover") || text.includes("aluno")) {
         handleRemoveStudent();
       }
     }
 
     getStudents();
     students();
-  }, [transcript]);
+  }, [text]);
 
   const handleRemoveStudent = async () => {
     if (studentId) {
       try {
-        await api.remove("students", { studentId });
+        await api.delete(`students/${studentId}`);
 
         setTimeout(() => {
           onShowAlert("warning", 2);
           setTimeout(() => {
             window.location.href = "/Help";
-          }, 1000);
+          }, 2000);
         }, 2000);
       } catch (e) {
         onShowAlert("warning", 1);
@@ -86,6 +87,7 @@ export const Remove = () => {
     microphoneRef.current.classList.remove("listening");
     SpeechRecognition.stopListening();
     setIsListening(false);
+    setText(transcript);
     resetTranscript();
   };
 
