@@ -212,7 +212,7 @@ export const Lab = () => {
               styles={colourStyles}
               options={labs}
               onChange={(option) => setLabId(option.id)}
-              placeholder="Selecione a disciplina"
+              placeholder="Selecione o laboratório"
             />
           </div>
           <br></br>

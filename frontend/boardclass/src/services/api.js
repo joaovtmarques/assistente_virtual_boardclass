@@ -1,8 +1,7 @@
 import axios from "axios";
-import GLOBAL from "../global/Globals";
 
 const api = axios.create({
-  baseURL: GLOBAL.BASE_URL,
+  baseURL: process.env.REACT_APP_BACKEND_URL,
 });
 
 export default api;

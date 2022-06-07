@@ -98,7 +98,7 @@ export const ShowInfo = () => {
                   <img src={infoLab} alt=""></img>
                 </div>
                 <div className="labInfo">
-                  <li className="li-title">Laboratório</li>
+                  <li className="li-title">Laboratórios</li>
                   <hr></hr>
                   {labs.map(function (item) {
                     return (
