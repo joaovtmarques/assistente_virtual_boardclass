@@ -72,6 +72,24 @@ Além disso, é legal ter um bom editor de código, como o [VSCode](https://code
 ### 🎲 Rodando a aplicação
 
 ```bash
+# --backend
+# Clone este repositório
+$ git clone <https://github.com/joaovtmarques/assistente_virtual_boardclass>
+# Acesse a pasta do projeto no terminal
+$ cd assistente_virtual_boardclass
+# Navegue até a pasta 'backend' e depois até a pasta 'boardclass'
+$ cd backend
+$ cd boardclass
+# Instale as dependências
+$ npm install ou yarn install
+# Configure o orm do adonisjs para banco de dados PostgreSQL
+$ node ace configure @adonisjs/lucid
+# Na raíz do projeto, crie um arquivo .env com as mesmas variáveis contidas em .env.example
+# Preencha as variáveis com os respectivos valores da sua máquina
+# Execute a aplicação
+$ node ace serve ou yarn dev
+
+# --frontend
 # Clone este repositório
 $ git clone <https://github.com/joaovtmarques/assistente_virtual_boardclass>
 # Acesse a pasta do projeto no terminal
@@ -81,6 +99,10 @@ $ cd frontend
 $ cd boardclass
 # Instale as dependências
 $ npm install ou yarn install
+# Na raíz do projeto, crie um arquivo .env com a variável contida em .env.example
+$ REACT_APP_BACKEND_URL=http://{ip-backend}:{porta}/api
+# Preencha a variável com o ip do backend rodando na sua máquina
+# Com o backend já em execução:
 # Execute a aplicação
 $ npm start ou yarn start
 ```
