@@ -4,8 +4,8 @@
 
 <br>
 
-<p align="left">A assistente BoardClass é uma assistente virtual web. Seu objetivo é auxiliar professores com o gerenciamento de turmas e seus respectivos alunos e disciplinas, permitindo a criação de novas turmas/disciplinas, agendamento de provas, adição de novos alunos, entre outras funcionalidades. </p>
-<p align="left">Ela funciona recebendo o comando por voz (por meio do professor) e, então, realizando em seguida o que foi pedido. Em alguns casos, é necessário que o professor dê o comando por voz e então tenha que inserir manualmente os dados para que a ação seja concluída. Por exemplo na criação de um aluno, ele deve inserir as informações do aluno por meio do teclado do próprio computador.</p>
+<p align="left">A assistente BoardClass é uma assistente virtual web. Seu objetivo é auxiliar professores com o gerenciamento de turmas, alunos e disciplinas: permitindo a criação de novas turmas/disciplinas, agendamento de provas, adição de novos alunos, entre outras funcionalidades. </p>
+<p align="left">Ela funciona recebendo o comando por voz (por meio do professor) e realizando em seguida o que foi pedido. Em alguns casos, é necessário que o professor dê o comando por voz e então tenha que inserir manualmente os dados para que a ação seja concluída. Por exemplo na criação de um aluno, ele deve inserir as informações do aluno por meio do teclado do próprio computador.</p>
 
 <br>
 
@@ -57,7 +57,7 @@
 
 ## 📝 Task/Story Board
 
-<img src="images/taskboard.png" />
+<img src="images/taskboard.jpeg" />
 
 <br>
 

@@ -50,7 +50,8 @@ export const Exam = () => {
         text.includes("criar") ||
         text.includes("cadastrar") ||
         text.includes("prova") ||
-        text.includes("exame")
+        text.includes("exame") ||
+        text.includes("agendar")
       ) {
         handleCreateExam();
       }
