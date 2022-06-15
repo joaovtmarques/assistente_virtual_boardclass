@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Spinner } from "react-activity";
 import Alert from "react-popup-alert";
 import Select from "react-select";
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
-import mic from "../../assets/mic-white.png";
+import buttonSend from "../../assets/buttonSend.png";
 import Globals from "../../global/Globals";
 import { LayoutBody } from "../../layout";
 import api from "../../services/api";
@@ -22,6 +25,7 @@ export const Class = () => {
 
   const [isListening, setIsListening] = useState(false);
   const [isListening2, setIsListening2] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [subjectId, setSubjectId] = useState(0);
   const [text, setText] = useState("");
   const [text2, setText2] = useState("");
@@ -58,6 +62,7 @@ export const Class = () => {
     if (text === "" || subjectId === "") {
       onShowAlert("warning", 0);
     } else {
+      setLoading(true);
       let name = text;
       let subject_id = subjectId;
 
@@ -66,6 +71,7 @@ export const Class = () => {
 
         setTimeout(() => {
           onShowAlert("warning", 2);
+          setLoading(false);
           setTimeout(() => {
             window.location.href = "/Help";
           }, 3000);
@@ -250,13 +256,21 @@ export const Class = () => {
           </div>
           <br></br>
           <button
-            className="loading"
-            ref={microphoneRef2}
-            onClick={isListening2 ? stopListening2 : handleListening2}
+            className="buttonSubmit"
+            onClick={handleCreateClass}
+            disabled={loading}
           >
-            {(isListening2 && <button className={styles.stopButton} />) || (
-              <img alt="button" className="micImg" src={mic}></img>
-            )}
+            {(loading && (
+              <span className="loading">
+                <Spinner
+                  style={{
+                    height: 15,
+                    width: 15,
+                    color: "white",
+                  }}
+                />
+              </span>
+            )) || <img src={buttonSend} alt=""></img>}
           </button>
         </div>
 

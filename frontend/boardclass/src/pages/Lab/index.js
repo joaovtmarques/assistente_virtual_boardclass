@@ -4,6 +4,8 @@ import Select from "react-select";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { Spinner } from "react-activity";
+import buttonSend from "../../assets/buttonSend.png";
 
 import mic from "../../assets/mic-white.png";
 import Globals from "../../global/Globals";
@@ -21,6 +23,7 @@ export const Lab = () => {
   const [isListening, setIsListening] = useState(false);
   const [text, setText] = useState("");
   const [labs, setLabs] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [classes, setClasses] = useState([]);
   const [labId, setLabId] = useState(null);
   const [classId, setClassId] = useState(null);
@@ -44,27 +47,14 @@ export const Lab = () => {
       }
     };
 
-    const lab = () => {
-      if (
-        text.includes("criar") ||
-        text.includes("agendar") ||
-        text.includes("marcar") ||
-        text.includes("reservar") ||
-        text.includes("marcar") ||
-        text.includes("laboratório")
-      ) {
-        handleScheduleLab();
-      }
-    };
-
     getClassesSubjects();
-    lab();
   }, [text]);
 
   const handleScheduleLab = async () => {
     if (!date || date.length < 4 || labId === "" || classId === "") {
       onShowAlert("warning", 0);
     } else {
+      setLoading(true);
       try {
         await api.post("laboratories/schedule", {
           class_id: classId,
@@ -74,6 +64,7 @@ export const Lab = () => {
 
         setTimeout(() => {
           onShowAlert("warning", 2);
+          setLoading(false);
           setTimeout(() => {
             window.location.href = "/Help";
           }, 3000);
@@ -237,13 +228,21 @@ export const Lab = () => {
           </div>
           <br></br>
           <button
-            className="loading"
-            ref={microphoneRef}
-            onClick={isListening ? stopListening : handleListening}
+            className="buttonSubmit"
+            onClick={handleScheduleLab}
+            disabled={loading}
           >
-            {(isListening && <button className={styles.stopButton} />) || (
-              <img alt="button" className="micImg" src={mic}></img>
-            )}
+            {(loading && (
+              <span className="loading">
+                <Spinner
+                  style={{
+                    height: 15,
+                    width: 15,
+                    color: "white",
+                  }}
+                />
+              </span>
+            )) || <img src={buttonSend} alt=""></img>}
           </button>
         </div>
 

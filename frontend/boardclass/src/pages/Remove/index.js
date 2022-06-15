@@ -1,23 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Alert from "react-popup-alert";
 import Select from "react-select";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
+import { Spinner } from "react-activity";
+import buttonSend from "../../assets/buttonSend.png";
 
 import Globals from "../../global/Globals";
 import { LayoutBody } from "../../layout";
 import api from "../../services/api";
 import styles from "../Home/home.module.css";
 import lineTitle from "./images/lineTitle.png";
-import mic from "../../assets/mic-white.png";
 import titleIcon from "./images/removeicon.png";
 import bodyImg from "./images/removeImg.png";
 
 export const Remove = () => {
-  const { transcript, resetTranscript } = useSpeechRecognition();
-  const [isListening, setIsListening] = useState(false);
   const [studentId, setStudentId] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
   const [alert, setAlert] = useState({
     type: "warning",
@@ -25,14 +22,6 @@ export const Remove = () => {
     show: false,
   });
   const [options, setOptions] = useState([]);
-  const microphoneRef = useRef(null);
-  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    return (
-      <div className="notSupportContainer">
-        Browser is not Support Speech Recognition.
-      </div>
-    );
-  }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
@@ -46,23 +35,18 @@ export const Remove = () => {
       }
     }
 
-    function students() {
-      if (text.includes("remover") || text.includes("aluno")) {
-        handleRemoveStudent();
-      }
-    }
-
     getStudents();
-    students();
   }, [text]);
 
   const handleRemoveStudent = async () => {
     if (studentId) {
+      setLoading(true);
       try {
         await api.delete(`students/${studentId}`);
 
         setTimeout(() => {
           onShowAlert("warning", 2);
+          setLoading(false);
           setTimeout(() => {
             window.location.href = "/Help";
           }, 2000);
@@ -73,22 +57,6 @@ export const Remove = () => {
     } else {
       onShowAlert("warning", 0);
     }
-  };
-
-  const handleListening = () => {
-    setIsListening(true);
-    microphoneRef.current.classList.add("listening");
-    SpeechRecognition.startListening({
-      continuous: true,
-    });
-  };
-
-  const stopListening = () => {
-    microphoneRef.current.classList.remove("listening");
-    SpeechRecognition.stopListening();
-    setIsListening(false);
-    setText(transcript);
-    resetTranscript();
   };
 
   function onCloseAlert(help) {
@@ -195,13 +163,21 @@ export const Remove = () => {
           </div>
           <br></br>
           <button
-            className="loading"
-            ref={microphoneRef}
-            onClick={isListening ? stopListening : handleListening}
+            className="buttonSubmit"
+            onClick={handleRemoveStudent}
+            disabled={loading}
           >
-            {(isListening && <button className={styles.stopButton} />) || (
-              <img alt="button" className="micImg" src={mic}></img>
-            )}
+            {(loading && (
+              <span className="loading">
+                <Spinner
+                  style={{
+                    height: 15,
+                    width: 15,
+                    color: "white",
+                  }}
+                />
+              </span>
+            )) || <img src={buttonSend} alt=""></img>}
           </button>
         </div>
 

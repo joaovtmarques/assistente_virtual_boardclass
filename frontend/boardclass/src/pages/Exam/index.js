@@ -4,6 +4,8 @@ import Select from "react-select";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { Spinner } from "react-activity";
+import buttonSend from "../../assets/buttonSend.png";
 
 import mic from "../../assets/mic-white.png";
 import Globals from "../../global/Globals";
@@ -20,6 +22,7 @@ export const Exam = () => {
   const [isListening, setIsListening] = useState(false);
   const [subjects, setSubjects] = useState([]);
   const [classes, setClasses] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [subjectId, setSubjectId] = useState(null);
   const [classId, setClassId] = useState(null);
   const [date, setDate] = useState("");
@@ -45,26 +48,14 @@ export const Exam = () => {
       }
     };
 
-    const exam = () => {
-      if (
-        text.includes("criar") ||
-        text.includes("cadastrar") ||
-        text.includes("prova") ||
-        text.includes("exame") ||
-        text.includes("agendar")
-      ) {
-        handleCreateExam();
-      }
-    };
-
     getClassesSubjects();
-    exam();
   }, [text]);
 
   const handleCreateExam = async () => {
     if (!date || date.length < 4 || subjectId === "" || classId === "") {
       onShowAlert("warning", 0);
     } else {
+      setLoading(true);
       try {
         await api.post("evaluations", {
           date,
@@ -74,6 +65,7 @@ export const Exam = () => {
 
         setTimeout(() => {
           onShowAlert("warning", 2);
+          setLoading(false);
           setTimeout(() => {
             window.location.href = "/Help";
           }, 3000);
@@ -237,13 +229,21 @@ export const Exam = () => {
           </div>
           <br></br>
           <button
-            className="loading"
-            ref={microphoneRef}
-            onClick={isListening ? stopListening : handleListening}
+            className="buttonSubmit"
+            onClick={handleCreateExam}
+            disabled={loading}
           >
-            {(isListening && <button className={styles.stopButton} />) || (
-              <img alt="button" className="micImg" src={mic}></img>
-            )}
+            {(loading && (
+              <span className="loading">
+                <Spinner
+                  style={{
+                    height: 15,
+                    width: 15,
+                    color: "white",
+                  }}
+                />
+              </span>
+            )) || <img src={buttonSend} alt=""></img>}
           </button>
         </div>
 

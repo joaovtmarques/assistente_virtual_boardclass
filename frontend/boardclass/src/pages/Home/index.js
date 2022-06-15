@@ -100,9 +100,9 @@ export const Home = () => {
   ) {
     window.location.href = "/remove";
   } else if (
-    transcript.includes("informações da turma") ||
+    transcript.includes("ver turma") ||
     transcript.includes("informações turma") ||
-    transcript.includes("ver turma")
+    transcript.includes("turma")
   ) {
     window.location.href = "/Show";
   } else if (
@@ -112,11 +112,16 @@ export const Home = () => {
   ) {
     window.location.href = "/Exam";
   } else if (
-    transcript.includes("anotações") ||
-    transcript.includes("notas") ||
-    transcript.includes("anotar")
+    transcript.includes("criar anotação") ||
+    transcript.includes("criar nota")
   ) {
     window.location.href = "/Notes";
+  } else if (
+    transcript.includes("anotações") ||
+    transcript.includes("notas") ||
+    transcript.includes("texto")
+  ) {
+    window.location.href = "/Note";
   } else if (
     transcript.includes("laboratório") ||
     transcript.includes("sala")

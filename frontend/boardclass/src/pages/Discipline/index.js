@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Alert from "react-popup-alert";
-import { Link } from "react-router-dom";
+import { Spinner } from "react-activity";
+import buttonSend from "../../assets/buttonSend.png";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -13,7 +14,6 @@ import bodyImg from "./images/books.png";
 import buttonInput from "./images/buttonInput.png";
 import titleIcon from "./images/icondisci.png";
 import lineTitle from "./images/lineTitle.png";
-import mic from "../../assets/mic-white.png";
 export const Discipline = () => {
   const { transcript, resetTranscript } = useSpeechRecognition();
   const microphoneRef = useRef(null);
@@ -23,6 +23,7 @@ export const Discipline = () => {
   const [isListening, setIsListening] = useState(false);
   const [isListening2, setIsListening2] = useState(false);
   const [isListening3, setIsListening3] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
   const [text3, setText3] = useState("");
@@ -135,6 +136,8 @@ export const Discipline = () => {
     if (text1 === "" || text2 === "") {
       onShowAlert("warning", 0);
     } else {
+      setLoading(true);
+
       const name = text1;
       const description = text2;
 
@@ -143,6 +146,7 @@ export const Discipline = () => {
 
         setTimeout(() => {
           onShowAlert("warning", 2);
+          setLoading(false);
           setTimeout(() => {
             window.location.href = "/Help";
           }, 3000);
@@ -256,13 +260,21 @@ export const Discipline = () => {
           </div>
           <br></br>
           <button
-            className="loading"
-            ref={microphoneRef3}
-            onClick={isListening3 ? stopListening3 : handleListening3}
+            className="buttonSubmit"
+            onClick={handleCreateDiscipline}
+            disabled={loading}
           >
-            {(isListening3 && <button className={styles.stopButton} />) || (
-              <img alt="button" className="micImg" src={mic}></img>
-            )}
+            {(loading && (
+              <span className="loading">
+                <Spinner
+                  style={{
+                    height: 15,
+                    width: 15,
+                    color: "white",
+                  }}
+                />
+              </span>
+            )) || <img src={buttonSend} alt=""></img>}
           </button>
         </div>
 

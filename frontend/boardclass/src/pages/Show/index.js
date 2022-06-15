@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Alert from "react-popup-alert";
 import Select from "react-select";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
+import { Spinner } from "react-activity";
+import buttonSend from "../../assets/buttonSend.png";
 
-import mic from "../../assets/mic-white.png";
 import Globals from "../../global/Globals";
 import { LayoutBody } from "../../layout";
 import api from "../../services/api";
@@ -15,17 +13,15 @@ import bodyImg from "./images/infoImg.png";
 import lineTitle from "./images/lineTitle.png";
 
 export const Show = () => {
-  const { transcript, resetTranscript } = useSpeechRecognition();
-  const [isListening, setIsListening] = useState(false);
   const [classId, setClassId] = useState(100);
   const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [alert, setAlert] = useState({
     type: "warning",
     text: "alert message",
     show: false,
   });
-  const microphoneRef = useRef(null);
 
   useEffect(() => {
     async function getClasses() {
@@ -38,53 +34,21 @@ export const Show = () => {
       }
     }
 
-    function classes() {
-      if (
-        text.includes("exibir") ||
-        text.includes("mostrar") ||
-        text.includes("buscar") ||
-        text.includes("informações") ||
-        text.includes("turma")
-      ) {
-        window.location.href = `/ShowInfo/${classId}`;
-      }
-    }
-
     getClasses();
-    classes();
 
     console.log("Trasncript: ", text);
   }, [text]);
 
-  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    return (
-      <div className="notSupportContainer">
-        Browser is not Support Speech Recognition.
-      </div>
-    );
-  }
-
-  const handleListening = () => {
-    setIsListening(true);
-    microphoneRef.current.classList.add("listening");
-    SpeechRecognition.startListening({
-      continuous: true,
-    });
-  };
-
-  const stopListening = () => {
-    microphoneRef.current.classList.remove("listening");
-    SpeechRecognition.stopListening();
-    setIsListening(false);
-    resetTranscript();
-    if (text) {
-      setText("");
-      setText(transcript);
+  function handleGoToClass() {
+    setLoading(true);
+    if (classId !== 100) {
+      setLoading(false);
+      window.location.href = `/ShowInfo/${classId}`;
     } else {
-      setText(transcript);
+      setLoading(false);
+      onShowAlert("warning", 15);
     }
-    resetTranscript();
-  };
+  }
 
   function onCloseAlert(help) {
     setAlert({
@@ -241,13 +205,21 @@ export const Show = () => {
           <br></br>
 
           <button
-            className="loading"
-            ref={microphoneRef}
-            onClick={isListening ? stopListening : handleListening}
+            className="buttonSubmit"
+            onClick={handleGoToClass}
+            disabled={loading}
           >
-            {(isListening && <button className={styles.stopButton} />) || (
-              <img alt="button" className="micImg" src={mic}></img>
-            )}
+            {(loading && (
+              <span className="loading">
+                <Spinner
+                  style={{
+                    height: 15,
+                    width: 15,
+                    color: "white",
+                  }}
+                />
+              </span>
+            )) || <img src={buttonSend} alt=""></img>}
           </button>
         </div>
 

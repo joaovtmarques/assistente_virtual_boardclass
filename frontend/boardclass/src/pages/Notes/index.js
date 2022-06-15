@@ -1,16 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { LayoutBody } from "../../layout";
 import bodyImg from "./images/noteImg.png";
 import titleIcon from "./images/noteicon.png";
 import lineTitle from "./images/lineTitle.png";
+import { Spinner } from "react-activity";
+import buttonSend from "../../assets/buttonSend.png";
 import Alert from "react-popup-alert";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import mic from "../../assets/mic-white.png";
 import Globals from "../../global/Globals";
 import api from "../../services/api";
 import styles from "../Home/home.module.css";
+import buttonInput from "./images/buttonInput.png";
 import { format } from "date-fns";
 
 export const Notes = () => {
@@ -21,41 +23,27 @@ export const Notes = () => {
 
   const [isListening, setIsListening] = useState(false);
   const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({
     type: "warning",
     text: "alert message",
     show: false,
   });
 
-  useEffect(() => {
-    const note = () => {
-      if (
-        text.includes("criar") ||
-        text.includes("anotação") ||
-        text.includes("nota") ||
-        text.includes("cadastrar") ||
-        text.includes("escrever") ||
-        text.includes("salvar")
-      ) {
-        handleCreateNote();
-      }
-    };
-
-    note();
-  }, [text]);
-
   const handleCreateNote = async () => {
-    if (note === "") {
+    if (text === "") {
       onShowAlert("warning", 0);
     } else {
+      setLoading(true);
       try {
         await api.post("notes", {
-          note,
+          note: text,
           date: format(new Date(), "dd/MM/yy"),
         });
 
         setTimeout(() => {
           onShowAlert("warning", 2);
+          setLoading(false);
           setTimeout(() => {
             window.location.href = "/Help";
           }, 3000);
@@ -177,23 +165,49 @@ export const Notes = () => {
       <div className="containerInput">
         <div className="forms">
           <br></br>
-          <div className="rowInput">
+          {/* <div className="rowInput">
             <input
               className="disciplineInput"
               onChange={(e) => setNote(e.target.value)}
-              value={note}
+              value={text}
               placeholder={"Anotação: "}
             />
+          </div> */}
+          <div className="rowInput">
+            <input
+              className="disciplineInput"
+              onChange={(e) => setText(e.target.value)}
+              value={text}
+              placeholder={"Anotação: "}
+            />
+
+            <button
+              className="buttonInput"
+              ref={microphoneRef}
+              onClick={isListening ? stopListening : handleListening}
+            >
+              {(isListening && <button className={styles.stopButton} />) || (
+                <img alt="button" src={buttonInput}></img>
+              )}
+            </button>
           </div>
           <br></br>
           <button
-            className="loading"
-            ref={microphoneRef}
-            onClick={isListening ? stopListening : handleListening}
+            className="buttonSubmit"
+            onClick={handleCreateNote}
+            disabled={loading}
           >
-            {(isListening && <button className={styles.stopButton} />) || (
-              <img alt="button" className="micImg" src={mic}></img>
-            )}
+            {(loading && (
+              <span className="loading">
+                <Spinner
+                  style={{
+                    height: 15,
+                    width: 15,
+                    color: "white",
+                  }}
+                />
+              </span>
+            )) || <img src={buttonSend} alt=""></img>}
           </button>
         </div>
 

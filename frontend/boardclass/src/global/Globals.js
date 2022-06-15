@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  BASE_URL: "http://192.168.1.71:3333/api",
   messages: [
     {
       message:
@@ -56,6 +55,9 @@ export default {
     {
       message:
         "Ah não! :( Parece que tivemos um problema para criar sua anotação.",
+    },
+    {
+      message: "Você precisa selecionar uma turma para exibirmos! ",
     },
   ],
 };
